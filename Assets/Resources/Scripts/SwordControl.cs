@@ -15,50 +15,49 @@ public class SwordControl : MonoBehaviour
     Vector2 _rotationBeforeSwipe;
     Vector2 _tapPosition;
     Vector2 _swipeDelta;
-    bool _isSwiping;
 
     private void Start()
     {
         _rotationBeforeSwipe = Vector2.zero;
         _tapPosition = Vector2.zero;
         _swipeDelta = Vector2.zero;
-        _isSwiping = false;
     }
 
     private void Update()
     {
-        if(_isSwiping == false)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _isSwiping = true;
-                _tapPosition = Input.mousePosition;
-                _rotationBeforeSwipe = _swordPivot.rotation.eulerAngles;
-            }
+            _tapPosition = Input.mousePosition;
+            _rotationBeforeSwipe = _swordPivot.localEulerAngles;
         }
-        else
+
+        if (Input.GetMouseButton(0))
         {
             //getting swipe delta
             _swipeDelta = ((Vector2)Input.mousePosition - _tapPosition) / _divisorBySwipeDelta;
-            //set rotation
+            //prepare rotation
             Vector2 nextRotation;
             nextRotation.x = _swipeDelta.y * -1 * _turnForce + _rotationBeforeSwipe.x;
             nextRotation.y = _swipeDelta.x * _turnForce + _rotationBeforeSwipe.y;
-            _swordPivot.rotation = Quaternion.Euler(nextRotation.x, nextRotation.y, 0);
+            _swordPivot.localRotation = Quaternion.Euler(nextRotation.x, nextRotation.y, 0);
             //clamp angle
-            Vector2 currentRotation = transform.rotation.eulerAngles;
+            Vector2 currentRotation = _swordPivot.localEulerAngles;
+
+            currentRotation.x = (currentRotation.x > 180) ? currentRotation.x - 360 : currentRotation.x;
+            currentRotation.y = (currentRotation.y > 180) ? currentRotation.y - 360 : currentRotation.y;
+
             currentRotation.x = Mathf.Clamp(currentRotation.x, _minXAngle, _maxXAngle);
             currentRotation.y = Mathf.Clamp(currentRotation.y, _minYAngle, _maxYAngle);
-            transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
-
-            if (Input.GetMouseButtonUp(0)) ResetSwipe();
+            //set rotation
+            _swordPivot.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
         }
+
+        if (Input.GetMouseButtonUp(0)) ResetSwipe();
     }
     void ResetSwipe()
     {
         _rotationBeforeSwipe = Vector2.zero;
         _tapPosition = Vector2.zero;
         _swipeDelta = Vector2.zero;
-        _isSwiping = false;
     }
 }
