@@ -8,6 +8,7 @@ public class SwordControl : MonoBehaviour
     [SerializeField] Transform _swordTransform;
     [Header("Turn settings")]
     [SerializeField] float _turnForce;
+    [SerializeField] float _turnSwordSmooth;
     [SerializeField] float _divisorBySwipeDelta;
     [Header("Angle settings")]
     [SerializeField] float _maxXAngle;
@@ -45,7 +46,7 @@ public class SwordControl : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             //save current sword position
-            if(Vector2.Distance(Input.mousePosition, _lastMousePosition) > 1f)
+            if(Vector2.Distance(Input.mousePosition, _lastMousePosition) > 0.5f)
             {
                 _lastSwordPosition = _swordTransform.position;
                 _lastMousePosition = Input.mousePosition;
@@ -70,7 +71,7 @@ public class SwordControl : MonoBehaviour
             //rotate sword
             Vector3 lookVector = _swordTransform.position - _lastSwordPosition;
             float angle = Mathf.Atan2(lookVector.y, lookVector.x) * Mathf.Rad2Deg;
-            _swordTransform.localRotation = Quaternion.Euler(0, 0, angle);
+            _swordTransform.localRotation = Quaternion.Lerp(_swordTransform.localRotation, Quaternion.Euler(0, 0, angle), _turnSwordSmooth * Time.deltaTime);
         }
     }
 }
