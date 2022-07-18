@@ -38,13 +38,14 @@ public class SwordControl : MonoBehaviour
         {
             _tapPosition = Input.mousePosition;
             _rotationBeforeSwipe = _swordPivot.localEulerAngles;
+            _lastSwordPosition = _swordTransform.position;
             _lastMousePosition = Input.mousePosition;
         }
 
         if (Input.GetMouseButton(0))
         {
             //save current sword position
-            if(_lastMousePosition != (Vector2)Input.mousePosition)
+            if(Vector2.Distance(Input.mousePosition, _lastMousePosition) > 1f)
             {
                 _lastSwordPosition = _swordTransform.position;
                 _lastMousePosition = Input.mousePosition;
@@ -68,8 +69,8 @@ public class SwordControl : MonoBehaviour
             _swordPivot.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
             //rotate sword
             Vector3 lookVector = _swordTransform.position - _lastSwordPosition;
-            _swordTransform.right = lookVector;
-            _swordTransform.localRotation = Quaternion.Euler(0, 0, _swordTransform.localEulerAngles.z);
+            float angle = Mathf.Atan2(lookVector.y, lookVector.x) * Mathf.Rad2Deg;
+            _swordTransform.localRotation = Quaternion.Euler(0, 0, angle);
         }
     }
 }
