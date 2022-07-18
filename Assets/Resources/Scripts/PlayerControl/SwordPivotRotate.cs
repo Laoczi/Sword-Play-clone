@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordControl : MonoBehaviour
+public class SwordPivotRotate : MonoBehaviour
 {
     [SerializeField] Transform _swordPivot;
     [Header("Turn settings")]
