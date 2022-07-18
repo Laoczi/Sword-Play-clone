@@ -4017,6 +4017,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
+--- !u!1 &2060527348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5449847829661560046, guid: 714e8fdd4c4de274595e140ada4a7239,
+    type: 3}
+  m_PrefabInstance: {fileID: 2060527347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2060527349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4261277353802652799, guid: 714e8fdd4c4de274595e140ada4a7239,
+    type: 3}
+  m_PrefabInstance: {fileID: 2060527347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2060527350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060527348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2392d518e2420b45aeb3056b1d673c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _swordPivot: {fileID: 2060527349}
+  _turnForce: 0.5
+  _divisorBySwipeDelta: 10
+  _maxXAngle: 45
+  _minXAngle: -45
+  _maxYAngle: 20
+  _minYAngle: -20
 --- !u!1 &2124434489
 GameObject:
   m_ObjectHideFlags: 0
