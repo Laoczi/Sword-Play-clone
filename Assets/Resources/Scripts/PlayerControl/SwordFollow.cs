@@ -16,8 +16,8 @@ public class SwordFollow : MonoBehaviour
         //follow move
         transform.position = Vector3.SmoothDamp(transform.position, _target.position, ref _velocity, _smoothTime, _maxSpeed);
         //follow rotation
-        Vector3 delta = _target.position - transform.position;
-        //transform.right = delta;
-        transform.localRotation = Quaternion.Euler(_target.eulerAngles.x, _target.eulerAngles.y, 0);
+        Vector3 direction = (transform.position + _velocity) - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.localRotation = Quaternion.Euler(_target.eulerAngles.x, _target.eulerAngles.y, angle);
     }
 }
