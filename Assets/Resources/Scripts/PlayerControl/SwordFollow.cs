@@ -7,7 +7,6 @@ public class SwordFollow : MonoBehaviour
     [SerializeField] Transform _target;
     [SerializeField] float _smoothTime;
     [SerializeField] float _maxSpeed;
-    [SerializeField] float _maxDistanceToPivot;
 
     Vector3 _velocity;
 
