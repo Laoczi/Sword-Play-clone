@@ -5,8 +5,11 @@ using UnityEngine;
 public class SwordControl : MonoBehaviour
 {
     [SerializeField] Transform _swordPivot;
+    [SerializeField] Transform _swordTransform;
+    [Header("Turn settings")]
     [SerializeField] float _turnForce;
     [SerializeField] float _divisorBySwipeDelta;
+    [Header("Angle settings")]
     [SerializeField] float _maxXAngle;
     [SerializeField] float _minXAngle;
     [SerializeField] float _maxYAngle;
@@ -16,11 +19,17 @@ public class SwordControl : MonoBehaviour
     Vector2 _tapPosition;
     Vector2 _swipeDelta;
 
+    Vector3 _lastSwordPosition;
+
+    Vector2 _lastMousePosition;
+
     private void Start()
     {
         _rotationBeforeSwipe = Vector2.zero;
         _tapPosition = Vector2.zero;
         _swipeDelta = Vector2.zero;
+
+        _lastSwordPosition = Vector3.zero;
     }
 
     private void Update()
@@ -29,10 +38,17 @@ public class SwordControl : MonoBehaviour
         {
             _tapPosition = Input.mousePosition;
             _rotationBeforeSwipe = _swordPivot.localEulerAngles;
+            _lastMousePosition = Input.mousePosition;
         }
 
         if (Input.GetMouseButton(0))
         {
+            //save current sword position
+            if(_lastMousePosition != (Vector2)Input.mousePosition)
+            {
+                _lastSwordPosition = _swordTransform.position;
+                _lastMousePosition = Input.mousePosition;
+            }
             //getting swipe delta
             _swipeDelta = ((Vector2)Input.mousePosition - _tapPosition) / _divisorBySwipeDelta;
             //prepare rotation
@@ -50,14 +66,10 @@ public class SwordControl : MonoBehaviour
             currentRotation.y = Mathf.Clamp(currentRotation.y, _minYAngle, _maxYAngle);
             //set rotation
             _swordPivot.localRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
+            //rotate sword
+            Vector3 lookVector = _swordTransform.position - _lastSwordPosition;
+            _swordTransform.right = lookVector;
+            _swordTransform.localRotation = Quaternion.Euler(0, 0, _swordTransform.localEulerAngles.z);
         }
-
-        if (Input.GetMouseButtonUp(0)) ResetSwipe();
-    }
-    void ResetSwipe()
-    {
-        _rotationBeforeSwipe = Vector2.zero;
-        _tapPosition = Vector2.zero;
-        _swipeDelta = Vector2.zero;
     }
 }
