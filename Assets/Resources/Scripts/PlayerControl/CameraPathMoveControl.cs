@@ -44,7 +44,9 @@ public class CameraPathMoveControl : MonoBehaviour
         }
 
         transform.position = _path.path.GetPointAtDistance(distanceTraveled);
-        transform.rotation = _path.path.GetRotationAtDistance(distanceTraveled);
+        Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
+
+        transform.rotation = Quaternion.Euler(nextRotation.eulerAngles.x, nextRotation.eulerAngles.y, 0);
     }
     private void OnTriggerStay(Collider other)
     {
