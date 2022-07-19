@@ -1885,12 +1885,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026493210}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1102015246 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4261277353802652799, guid: 714e8fdd4c4de274595e140ada4a7239,
-    type: 3}
-  m_PrefabInstance: {fileID: 2060527347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1106705583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,7 +2749,7 @@ MonoBehaviour:
       - 9.373627
       globalNormalsAngle: 90
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -3298,12 +3292,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785617624}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1828421623 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7299399598466860520, guid: 714e8fdd4c4de274595e140ada4a7239,
-    type: 3}
-  m_PrefabInstance: {fileID: 2060527347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866297082
 GameObject:
   m_ObjectHideFlags: 0
@@ -3967,33 +3955,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 210362881, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: _smoothTime
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 210362881, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: _positionPivot
-      value: 
-      objectReference: {fileID: 1828421623}
-    - target: {fileID: 210362881, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: _rotationPivot
-      value: 
-      objectReference: {fileID: 1102015246}
     - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
         type: 3}
       propertyPath: _path
       value: 
       objectReference: {fileID: 1603659037}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _slowMoveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _defaultMoveSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4338495223456329267, guid: 714e8fdd4c4de274595e140ada4a7239,
         type: 3}
       propertyPath: m_RootOrder
