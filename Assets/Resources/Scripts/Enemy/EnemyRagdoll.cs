@@ -7,9 +7,9 @@ public class EnemyRagdoll : MonoBehaviour
     [SerializeField] float _pushVelocity;
     [SerializeField] Rigidbody _mainRigidBody;
 
-    public void AfterSlice(Vector3 pushDirection)
+    public void AfterSlice()
     {
         _mainRigidBody.isKinematic = false;
-        _mainRigidBody.AddForce(pushDirection * _pushVelocity, ForceMode.Impulse);
+        _mainRigidBody.AddForce(Vector3.forward * _pushVelocity, ForceMode.Impulse);
     }
 }

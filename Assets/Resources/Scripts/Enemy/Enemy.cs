@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public static event Action onDeath;
+
     [SerializeField] protected Animator _animator;
     [SerializeField] protected Collider _triggerRange;
     [SerializeField] protected EnemyCheckPlayerInRange _triggerRangePlayerCheck;
@@ -19,6 +20,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
     protected abstract void OnPlayerEnterRangeZone();
+    protected void CallOnDeathEvent() { onDeath?.Invoke(); }
     private void OnEnable()
     {
         _triggerRangePlayerCheck.onPlayerEnter += OnPlayerEnterRangeZone;

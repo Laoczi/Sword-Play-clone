@@ -5,11 +5,8 @@ using BzKovSoft.ObjectSlicer;
 
 public class EnemySword : Enemy
 {
-    Vector3 _swordDirection;
     protected override void DealDamage(Transform swordTransform)
     {
-        _swordDirection = swordTransform.right;
-
         _animator.StopPlayback();
         _animator.enabled = false;
         _triggerRange.enabled = false;
@@ -18,11 +15,13 @@ public class EnemySword : Enemy
         IBzSliceable sliceTarget = _sliceTarget.GetComponent<IBzSliceable>();
         Plane slicePlane = new Plane(swordTransform.up,swordTransform.position);
         sliceTarget.Slice(slicePlane, OnEndSlice);
+
+        CallOnDeathEvent();
     }
     void OnEndSlice(BzSliceTryResult result)
     {
-        result.outObjectNeg.GetComponent<EnemyRagdoll>().AfterSlice(_swordDirection);
-        result.outObjectPos.GetComponent<EnemyRagdoll>().AfterSlice(_swordDirection);
+        result.outObjectNeg.GetComponent<EnemyRagdoll>().AfterSlice();
+        result.outObjectPos.GetComponent<EnemyRagdoll>().AfterSlice();
     }
 
     protected override void OnPlayerEnterRangeZone()
