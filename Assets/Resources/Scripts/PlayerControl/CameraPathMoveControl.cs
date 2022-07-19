@@ -4,6 +4,7 @@ using PathCreation;
 
 public class CameraPathMoveControl : MonoBehaviour
 {
+    public static event Action onDeath;
     public static event Action onReachedFinish;
 
     [SerializeField] PathCreator _path;
@@ -18,15 +19,19 @@ public class CameraPathMoveControl : MonoBehaviour
 
     bool _isReachedEnd;
 
+    bool _isDead;
+
     private void Start()
     {
         _currentMoveSpeed = _defaultMoveSpeed;
         _maxPathDistance = _path.path.length;
         _isReachedEnd = false;
+        _isDead = false;
     }
 
     private void Update()
     {
+        if (_isDead) return;
         if (_isReachedEnd) return;
 
         distanceTraveled += _currentMoveSpeed * Time.deltaTime;
@@ -40,5 +45,24 @@ public class CameraPathMoveControl : MonoBehaviour
 
         transform.position = _path.path.GetPointAtDistance(distanceTraveled);
         transform.rotation = _path.path.GetRotationAtDistance(distanceTraveled);
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("EnemyRange"))
+        {
+            _currentMoveSpeed = _slowMoveSpeed;
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            _isDead = true;
+            onDeath?.Invoke();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("EnemyRange"))
+        {
+            _currentMoveSpeed = _defaultMoveSpeed;
+        }
     }
 }

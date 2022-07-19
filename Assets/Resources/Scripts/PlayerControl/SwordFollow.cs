@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class SwordFollow : MonoBehaviour
@@ -16,10 +15,12 @@ public class SwordFollow : MonoBehaviour
         //follow move
         transform.position = Vector3.SmoothDamp(transform.position, _positionPivot.position, ref _velocity, _smoothTime, _maxSpeed);
         //follow rotation
-        if(Vector3.Distance(transform.position, _positionPivot.position) > 0.02f)
+        if(Vector3.Distance(transform.position, _positionPivot.position) > 0.01f)
         {
             Vector3 direction = (transform.position + _velocity) - transform.position;
+
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
             transform.localRotation = Quaternion.Euler(_rotationPivot.localEulerAngles.x, _rotationPivot.localEulerAngles.y, angle);
         }
     }
