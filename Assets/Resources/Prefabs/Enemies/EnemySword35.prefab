@@ -45,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &227305583
 MonoBehaviour:
@@ -4937,6 +4937,8 @@ MonoBehaviour:
   _triggerRange: {fileID: 227305582}
   _triggerRangePlayerCheck: {fileID: 227305583}
   _sliceTarget: {fileID: 2274615340043896209}
+  _isNeedWalk: 1
+  _walkSpeed: 0.1
 --- !u!136 &2034111092
 CapsuleCollider:
   m_ObjectHideFlags: 0

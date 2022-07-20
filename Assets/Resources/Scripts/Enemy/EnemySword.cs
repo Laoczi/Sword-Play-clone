@@ -5,6 +5,8 @@ using BzKovSoft.ObjectSlicer;
 
 public class EnemySword : Enemy
 {
+    [SerializeField] bool _isNeedWalk;
+    [SerializeField] float _walkSpeed;
     protected override void DealDamage(Transform swordTransform)
     {
         _animator.StopPlayback();
@@ -27,6 +29,25 @@ public class EnemySword : Enemy
     protected override void OnPlayerEnterRangeZone()
     {
         _triggerRangePlayerCheck.enabled = false;
-        _animator.SetTrigger("Attack");
+        if (_isNeedWalk)
+        {
+            StartCoroutine(WalkAndAttack());
+        }
+        else
+        {
+            _animator.SetTrigger("Attack");
+        }
+    }
+    IEnumerator WalkAndAttack()
+    {
+        float allTime = 1.033f;
+        float currentTime = 0;
+        _animator.SetTrigger("Walk");
+        while (currentTime <= allTime)
+        {
+            transform.position += transform.forward * -1 * _walkSpeed * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+            currentTime += Time.deltaTime;
+        }
     }
 }
