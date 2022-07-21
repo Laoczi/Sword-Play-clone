@@ -5,8 +5,6 @@ using BzKovSoft.ObjectSlicer;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] Collider _collider;
-    [SerializeField] Collider _trigger;
     [SerializeField] Rigidbody _rigidBody;
     [SerializeField] float _speed;
     bool _isSliced;
@@ -25,8 +23,6 @@ public class Bullet : MonoBehaviour
         {
             _isSliced = true;
             tag = "Untagged";
-            //_collider.enabled = true;
-            //_trigger.enabled = false;
             _rigidBody.isKinematic = false;
 
             IBzSliceable sliceTarget = GetComponent<IBzSliceable>();
