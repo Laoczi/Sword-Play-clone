@@ -18,7 +18,7 @@ namespace DynamicMeshCutter
             base.OnInspectorGUI();
             if (GUILayout.Button("Cut"))
             {
-                _pb.Cut();
+                //_pb.Cut();
             }
         }
 

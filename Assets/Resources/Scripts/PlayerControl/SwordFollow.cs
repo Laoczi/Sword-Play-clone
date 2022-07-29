@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public class SwordFollow : MonoBehaviour
 {
     [SerializeField] Transform _positionPivot;

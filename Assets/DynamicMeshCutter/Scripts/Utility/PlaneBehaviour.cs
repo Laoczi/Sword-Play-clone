@@ -1,22 +1,14 @@
+using UnityEngine;
 
 namespace DynamicMeshCutter
 {
     public class PlaneBehaviour : CutterBehaviour
     {
+        public MeshTarget target;
         public float DebugPlaneLength = 2;
-        public void Cut()
+        public void Cut(Transform planePosition)
         {
-            var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
-            foreach (var root in roots)
-            {
-                if (!root.activeInHierarchy)
-                    continue;
-                var targets = root.GetComponentsInChildren<MeshTarget>();
-                foreach (var target in targets)
-                {
-                    Cut(target, transform.position, transform.forward, null, OnCreated);
-                }
-            }
+            Cut(target, planePosition.position, planePosition.up, null, OnCreated);
         }
 
         void OnCreated(Info info, MeshCreationData cData)

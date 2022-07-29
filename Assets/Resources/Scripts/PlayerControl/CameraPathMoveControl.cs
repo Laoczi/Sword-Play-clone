@@ -49,6 +49,7 @@ public class CameraPathMoveControl : MonoBehaviour
         {
             _isDead = true;
             onDeath?.Invoke();
+            Debug.Log("я умир");
         }
     }
 }

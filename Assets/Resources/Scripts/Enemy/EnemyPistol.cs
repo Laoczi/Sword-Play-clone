@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BzKovSoft.ObjectSlicer;
+using DynamicMeshCutter;
 
 public class EnemyPistol : Enemy
 {
@@ -11,10 +11,17 @@ public class EnemyPistol : Enemy
     {
         _animator.StopPlayback();
         _animator.enabled = false;
-        _triggerRange.enabled = false;
-        GetComponent<Collider>().enabled = false;
-        
+
+        Collider[] ourColliders = GetComponents<Collider>();
+        foreach (Collider collider in ourColliders)
+        {
+            collider.enabled = false;
+        }
+
         CallOnDeathEvent();
+        _deathEffect.Play();
+
+        _slicer.Cut(swordTransform);
     }
 
     protected override void OnPlayerEnterRangeZone()

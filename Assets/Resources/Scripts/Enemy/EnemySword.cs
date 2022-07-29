@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BzKovSoft.ObjectSlicer;
+using DynamicMeshCutter;
 
 public class EnemySword : Enemy
 {
@@ -11,15 +11,17 @@ public class EnemySword : Enemy
     {
         _animator.StopPlayback();
         _animator.enabled = false;
-        _triggerRange.enabled = false;
+
         GetComponent<Collider>().enabled = false;
 
         CallOnDeathEvent();
-    }
+        _deathEffect.Play();
+        StopAllCoroutines();
 
+        _slicer.Cut(swordTransform);
+    }
     protected override void OnPlayerEnterRangeZone()
     {
-        _triggerRangePlayerCheck.enabled = false;
         if (_isNeedWalk)
         {
             StartCoroutine(WalkAndAttack());
