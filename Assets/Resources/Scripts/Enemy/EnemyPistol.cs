@@ -23,7 +23,6 @@ public class EnemyPistol : Enemy
 
         _slicer.Cut(swordTransform);
     }
-
     protected override void OnPlayerEnterRangeZone()
     {
         Bullet bullet = Instantiate(_bullet);

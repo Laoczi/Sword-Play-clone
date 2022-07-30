@@ -9,9 +9,10 @@ public class CameraPathMoveControl : MonoBehaviour
 
     [SerializeField] Camera _playerCamera;
     [SerializeField] PathCreator _path;
-    [SerializeField] float _slowTimeScale;
     [Header("Move speed settings")]
-    [SerializeField] float _moveSpeed;
+    [SerializeField] float _defaultMoveSpeed;
+    [SerializeField] float _slowMoveSpeed;
+    float _currentMoveSpeed;
     [Header("FOV settings")]
     [SerializeField] float _defaultFov;
     [SerializeField] float _slowFov;
@@ -29,6 +30,7 @@ public class CameraPathMoveControl : MonoBehaviour
         _maxPathDistance = _path.path.length;
         _isReachedEnd = false;
         _isDead = false;
+        _currentMoveSpeed = _defaultMoveSpeed;
         _currentFov = _defaultFov;
     }
 
@@ -37,7 +39,7 @@ public class CameraPathMoveControl : MonoBehaviour
         if (_isDead) return;
         if (_isReachedEnd) return;
 
-        distanceTraveled += _moveSpeed * Time.deltaTime;
+        distanceTraveled += _currentMoveSpeed * Time.deltaTime;
 
         if(distanceTraveled >= _maxPathDistance)
         {
@@ -68,11 +70,13 @@ public class CameraPathMoveControl : MonoBehaviour
     }
     void SetSlowMovement()
     {
-        Time.timeScale = _slowTimeScale;
+        _currentMoveSpeed = _slowMoveSpeed;
+        _currentFov = _slowFov;
     }
     void SetDefaultMovement()
     {
-        Time.timeScale = 1;
+        _currentMoveSpeed = _defaultMoveSpeed;
+        _currentFov = _defaultFov;
     }
     private void OnEnable()
     {
