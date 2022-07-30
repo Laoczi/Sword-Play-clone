@@ -24,7 +24,11 @@ public abstract class Enemy : CutterBehaviour
     {
         _animator.SetFloat("Speed", _slowAnimationSpeed);
     }
-    protected void CallOnDeathEvent() { onDeath?.Invoke(); }
+    protected void CallOnDeathEvent() {
+        Destroy(_range.gameObject);
+        if (_slow != null) Destroy(_slow.gameObject);
+        onDeath?.Invoke(); 
+    }
     private void OnEnable()
     {
         _slicer = GetComponent<PlaneBehaviour>();

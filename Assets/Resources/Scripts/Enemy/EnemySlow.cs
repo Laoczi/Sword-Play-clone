@@ -8,8 +8,8 @@ public class EnemySlow : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            onPlayerEnter?.Invoke();
             GetComponent<Collider>().enabled = false;
+            onPlayerEnter?.Invoke();
         }
     }
 }
