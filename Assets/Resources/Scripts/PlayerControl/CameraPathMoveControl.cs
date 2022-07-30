@@ -9,10 +9,9 @@ public class CameraPathMoveControl : MonoBehaviour
 
     [SerializeField] Camera _playerCamera;
     [SerializeField] PathCreator _path;
+    [SerializeField] float _slowTimeScale;
     [Header("Move speed settings")]
-    [SerializeField] float _defaultMoveSpeed;
-    [SerializeField] float _slowMoveSpeed;
-    float _currentMoveSpeed;
+    [SerializeField] float _moveSpeed;
     [Header("FOV settings")]
     [SerializeField] float _defaultFov;
     [SerializeField] float _slowFov;
@@ -30,7 +29,6 @@ public class CameraPathMoveControl : MonoBehaviour
         _maxPathDistance = _path.path.length;
         _isReachedEnd = false;
         _isDead = false;
-        _currentMoveSpeed = _defaultMoveSpeed;
         _currentFov = _defaultFov;
     }
 
@@ -39,7 +37,7 @@ public class CameraPathMoveControl : MonoBehaviour
         if (_isDead) return;
         if (_isReachedEnd) return;
 
-        distanceTraveled += _currentMoveSpeed * Time.deltaTime;
+        distanceTraveled += _moveSpeed * Time.deltaTime;
 
         if(distanceTraveled >= _maxPathDistance)
         {
@@ -63,23 +61,18 @@ public class CameraPathMoveControl : MonoBehaviour
             onDeath?.Invoke();
             Debug.Log("я умир");
         }
-        if (other.CompareTag("EnemyRange"))
+        if (other.CompareTag("EnemySlow"))
         {
-            if (other.GetComponent<EnemyRange>().needSlowMove)
-            {
-                SetSlowMovement();
-            }
+            SetSlowMovement();
         }
     }
     void SetSlowMovement()
     {
-        _currentMoveSpeed = _slowMoveSpeed;
-        _currentFov = _slowFov;
+        Time.timeScale = _slowTimeScale;
     }
     void SetDefaultMovement()
     {
-        _currentMoveSpeed = _defaultMoveSpeed;
-        _currentFov = _defaultFov;
+        Time.timeScale = 1;
     }
     private void OnEnable()
     {
