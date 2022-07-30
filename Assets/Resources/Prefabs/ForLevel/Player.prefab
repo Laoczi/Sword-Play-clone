@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4792352378669827295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.000000040978193, z: 2.2500005}
+  m_LocalPosition: {x: 0, y: 0.008724856, z: 2.0001528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCamera: {fileID: 1473922977811380349}
   _path: {fileID: 0}
-  _slowTimeScale: 0.2
-  _moveSpeed: 1
+  _defaultMoveSpeed: 2
+  _slowMoveSpeed: 0.1
   _defaultFov: 60
   _slowFov: 57
   _smoothFov: 10
@@ -838,12 +838,12 @@ PrefabInstance:
     - target: {fileID: 4072210357258735372, guid: c7bd1c986dca5f141a8a8717b9d44709,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.142
+      value: -0.1332751
       objectReference: {fileID: 0}
     - target: {fileID: 4072210357258735372, guid: c7bd1c986dca5f141a8a8717b9d44709,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.524
+      value: 1.2741523
       objectReference: {fileID: 0}
     - target: {fileID: 4072210357258735372, guid: c7bd1c986dca5f141a8a8717b9d44709,
         type: 3}
