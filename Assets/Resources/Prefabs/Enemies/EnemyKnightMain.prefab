@@ -15633,7 +15633,7 @@ Transform:
   m_GameObject: {fileID: 7142076783610437329}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0.3487}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5520149282330686792}
@@ -21043,6 +21043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8991136417499973019}
   - component: {fileID: 1346248043}
+  - component: {fileID: 1554932748}
   m_Layer: 0
   m_Name: EnemyKnightMain
   m_TagString: Enemy
@@ -21087,6 +21088,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &1554932748
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614610123448016673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.14025056
+  m_Height: 0.7058487
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.26861417, z: 0.008659661}
 --- !u!1 &8767910053464025907
 GameObject:
   m_ObjectHideFlags: 0
