@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySword (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
+      propertyPath: _walkSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3262768734351619453, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
       propertyPath: m_RootOrder
@@ -1036,6 +1041,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemySword (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
+      propertyPath: _walkSpeed
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3262768734351619453, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
@@ -2138,8 +2148,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
+      propertyPath: _walkSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
       propertyPath: _isNeedWalk
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341387418696913522, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3262768734351619453, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
@@ -2795,7 +2815,7 @@ MonoBehaviour:
       - {x: -0.83814347, y: 0, z: 0.35962695}
       - {x: -0.63501513, y: -0.019880295, z: 2.0553794}
       - {x: -0.76816857, y: 0, z: 3.2525418}
-      - {x: -0.76854336, y: 1.0910877, z: 5.2427783}
+      - {x: -0.76854336, y: 0.71138287, z: 5.2427783}
       - {x: -0.71245825, y: 1.0098464, z: 6.0421066}
       - {x: -0.7167127, y: 0.99618804, z: 7.0645614}
       - {x: -0.7167127, y: 0.99618804, z: 8.945747}
@@ -2830,7 +2850,7 @@ MonoBehaviour:
       - 4.24
       globalNormalsAngle: 90
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -3473,6 +3493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySword (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
+      propertyPath: _walkSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3262768734351619453, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
       propertyPath: m_RootOrder
@@ -4048,6 +4073,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySword (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
+      propertyPath: _walkSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3262768734351619453, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
       propertyPath: m_RootOrder
@@ -4422,10 +4452,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1148486691, guid: f7e65770c94d39e4d8ba10e2314a6347, type: 3}
+      propertyPath: m_Radius
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2016413350354067760, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
       propertyPath: m_Name
       value: EnemySword
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016413350354067765, guid: f7e65770c94d39e4d8ba10e2314a6347,
+        type: 3}
+      propertyPath: _walkSpeed
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3262768734351619453, guid: f7e65770c94d39e4d8ba10e2314a6347,
         type: 3}
