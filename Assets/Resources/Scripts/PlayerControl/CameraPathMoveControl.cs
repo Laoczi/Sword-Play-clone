@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using PathCreation;
 
@@ -18,12 +19,18 @@ public class CameraPathMoveControl : MonoBehaviour
     [SerializeField] float _slowFov;
     [SerializeField] float _smoothFov;
     float _currentFov;
+    [Header("Look settings")]
+    [SerializeField] float _smoothLook;
+    [SerializeField] float _lookDuration;
+    Coroutine _clearLookTarget;
 
     float distanceTraveled;
     float _maxPathDistance;
 
     bool _isReachedEnd;
     bool _isDead;
+
+    Transform _lookTarget;
 
     private void Start()
     {
@@ -47,11 +54,20 @@ public class CameraPathMoveControl : MonoBehaviour
             distanceTraveled = _maxPathDistance - 0.01f;
             onReachedFinish?.Invoke();
         }
-
+        //moving along path
         transform.position = _path.path.GetPointAtDistance(distanceTraveled);
-
-        Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
-        transform.rotation = Quaternion.Euler(nextRotation.eulerAngles.x, nextRotation.eulerAngles.y, 0);
+        //looking on target or get rotation at path point
+        if(_lookTarget != null)
+        {
+            Vector3 lookDirection = _lookTarget.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _smoothLook * Time.deltaTime);
+        }
+        else
+        {
+            Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
+            transform.rotation = Quaternion.Euler(nextRotation.eulerAngles.x, nextRotation.eulerAngles.y, 0);
+        }
 
         _playerCamera.fieldOfView = Mathf.MoveTowards(_playerCamera.fieldOfView, _currentFov, _smoothFov * Time.deltaTime);
     }
@@ -66,6 +82,11 @@ public class CameraPathMoveControl : MonoBehaviour
         if (other.CompareTag("EnemySlow"))
         {
             SetSlowMovement();
+
+            _lookTarget = other.transform;
+
+            if (_clearLookTarget != null) StopCoroutine(_clearLookTarget);
+            _clearLookTarget = StartCoroutine(ClearLookTarget());
         }
     }
     void SetSlowMovement()
@@ -77,6 +98,16 @@ public class CameraPathMoveControl : MonoBehaviour
     {
         _currentMoveSpeed = _defaultMoveSpeed;
         _currentFov = _defaultFov;
+
+        if (_clearLookTarget != null) StopCoroutine(_clearLookTarget);
+
+        _clearLookTarget = null;
+        _lookTarget = null;
+    }
+    IEnumerator ClearLookTarget()
+    {
+        yield return new WaitForSeconds(_lookDuration);
+        _lookTarget = null;
     }
     private void OnEnable()
     {
