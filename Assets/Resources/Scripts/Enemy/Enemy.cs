@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using DynamicMeshCutter;
 
-public abstract class Enemy : CutterBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public static event Action onDeath;
 

@@ -1,21 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using BzKovSoft.ObjectSlicer;
+using DynamicMeshCutter;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] Rigidbody _rigidBody;
-    [SerializeField] float _speed;
+    public static event Action onDead;
+
+    [SerializeField] float _defaultSpeed;
+    [SerializeField] float _slowSpeed;
+    float _currentSpeed;
+    [SerializeField] EnemySlow _slow;
+    [SerializeField] PlaneBehaviour _slicer;
     bool _isSliced;
     private void Awake()
     {
         _isSliced = false;
+        _currentSpeed = _defaultSpeed;
+
+        if (_slow != null) _slow.onPlayerEnter += OnPlayerEnterSlowZone;
     }
     void Update()
     {
         if (_isSliced) return;
-        transform.position += transform.forward * Time.deltaTime;
+        transform.position += transform.forward * _currentSpeed * Time.deltaTime;
+    }
+    void OnPlayerEnterSlowZone()
+    {
+        _currentSpeed = _slowSpeed;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -23,11 +34,12 @@ public class Bullet : MonoBehaviour
         {
             _isSliced = true;
             tag = "Untagged";
-            _rigidBody.isKinematic = false;
-
-            IBzSliceable sliceTarget = GetComponent<IBzSliceable>();
-            Plane slicePlane = new Plane(other.transform.up, other.transform.position);
-            sliceTarget.Slice(slicePlane, null);
+            onDead?.Invoke();
+            _slicer.Cut(other.transform);
         }
+    }
+    private void OnDisable()
+    {
+        _slow.onPlayerEnter -= OnPlayerEnterSlowZone;
     }
 }

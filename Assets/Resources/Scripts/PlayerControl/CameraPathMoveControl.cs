@@ -113,10 +113,12 @@ public class CameraPathMoveControl : MonoBehaviour
     }
     private void OnEnable()
     {
+        Bullet.onDead += SetDefaultMovement;
         Enemy.onDeath += SetDefaultMovement;
     }
     private void OnDisable()
     {
+        Bullet.onDead -= SetDefaultMovement;
         Enemy.onDeath -= SetDefaultMovement;
     }
 }

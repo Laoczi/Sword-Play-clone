@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b47e3efaf725a4468f982ebe90b3945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bullet: {fileID: 0}
+  _enemy: {fileID: 2016413350354067765}
 --- !u!1 &53864406765164200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5402,11 +5404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f85b513a0b97764daf0090cd91d0745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Separation: 0.02
-  DestroyTargets: 1
-  UseAsync: 1
-  VertexCreationThreshold: 0
-  DefaultMaterial: {fileID: 2100000, guid: 2d86587fcd4b2424faf0101a287d1944, type: 2}
   _range: {fileID: 2341387418696913523}
   _slow: {fileID: 1148486692}
   _slowAnimationSpeed: 0.2
@@ -5432,6 +5429,7 @@ MonoBehaviour:
   VertexCreationThreshold: 0
   DefaultMaterial: {fileID: 2100000, guid: 2d86587fcd4b2424faf0101a287d1944, type: 2}
   target: {fileID: 6477469660546761419}
+  _pushForce: 0
   DebugPlaneLength: 0
 --- !u!1 &2173548602995038876
 GameObject:
