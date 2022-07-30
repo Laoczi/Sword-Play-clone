@@ -13,7 +13,7 @@ public class CameraPathMoveControl : MonoBehaviour
     [SerializeField] float _defaultMoveSpeed;
     [SerializeField] float _slowMoveSpeed;
     float _currentMoveSpeed;
-    [Header("FOW settings")]
+    [Header("FOV settings")]
     [SerializeField] float _defaultFov;
     [SerializeField] float _slowFov;
     [SerializeField] float _smoothFov;
@@ -80,5 +80,13 @@ public class CameraPathMoveControl : MonoBehaviour
     {
         _currentMoveSpeed = _defaultMoveSpeed;
         _currentFov = _defaultFov;
+    }
+    private void OnEnable()
+    {
+        Enemy.onDeath += SetDefaultMovement;
+    }
+    private void OnDisable()
+    {
+        Enemy.onDeath -= SetDefaultMovement;
     }
 }
