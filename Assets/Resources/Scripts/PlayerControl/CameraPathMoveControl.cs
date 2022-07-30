@@ -49,8 +49,8 @@ public class CameraPathMoveControl : MonoBehaviour
         }
 
         transform.position = _path.path.GetPointAtDistance(distanceTraveled);
-        Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
 
+        Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
         transform.rotation = Quaternion.Euler(nextRotation.eulerAngles.x, nextRotation.eulerAngles.y, 0);
 
         _playerCamera.fieldOfView = Mathf.MoveTowards(_playerCamera.fieldOfView, _currentFov, _smoothFov * Time.deltaTime);
@@ -74,9 +74,11 @@ public class CameraPathMoveControl : MonoBehaviour
     void SetSlowMovement()
     {
         _currentMoveSpeed = _slowMoveSpeed;
+        _currentFov = _slowFov;
     }
     void SetDefaultMovement()
     {
         _currentMoveSpeed = _defaultMoveSpeed;
+        _currentFov = _defaultFov;
     }
 }

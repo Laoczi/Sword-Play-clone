@@ -1192,12 +1192,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719488890}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &732249123 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 1473922977811380349, guid: 714e8fdd4c4de274595e140ada4a7239,
-    type: 3}
-  m_PrefabInstance: {fileID: 2060527347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &785901821
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,34 +4104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 210362881, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: DefaultMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 2d86587fcd4b2424faf0101a287d1944, type: 2}
-    - target: {fileID: 1038805211, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: m_Size.x
-      value: 0.14041482
-      objectReference: {fileID: 0}
-    - target: {fileID: 1038805211, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: m_Size.y
-      value: 0.03868952
-      objectReference: {fileID: 0}
-    - target: {fileID: 1038805211, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: m_Size.z
-      value: 0.7550819
-      objectReference: {fileID: 0}
-    - target: {fileID: 1038805211, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: m_Center.x
-      value: -0.01779289
-      objectReference: {fileID: 0}
-    - target: {fileID: 1038805211, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: m_Center.y
-      value: 0.00014608585
-      objectReference: {fileID: 0}
-    - target: {fileID: 1038805211, guid: 714e8fdd4c4de274595e140ada4a7239, type: 3}
-      propertyPath: m_Center.z
-      value: 0.24993253
-      objectReference: {fileID: 0}
     - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
         type: 3}
       propertyPath: _path
@@ -4145,53 +4111,13 @@ PrefabInstance:
       objectReference: {fileID: 1603659037}
     - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
         type: 3}
-      propertyPath: _slowFov
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _slowFow
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
       propertyPath: _smoothFov
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _smoothFow
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _defaultFov
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _defaultFow
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _playerCamera
-      value: 
-      objectReference: {fileID: 732249123}
     - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
         type: 3}
       propertyPath: _slowMoveSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3471418966920410940, guid: 714e8fdd4c4de274595e140ada4a7239,
-        type: 3}
-      propertyPath: _defaultMoveSpeed
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4338495223456329267, guid: 714e8fdd4c4de274595e140ada4a7239,
         type: 3}

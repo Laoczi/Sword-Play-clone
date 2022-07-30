@@ -165,8 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3626a0bc0c6ec94a904a5fee22610e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 1473922977811380349}
   _path: {fileID: 0}
-  _moveSpeed: 2
+  _defaultMoveSpeed: 1
+  _slowMoveSpeed: 0.1
+  _defaultFov: 60
+  _slowFov: 50
+  _smoothFov: 5
 --- !u!114 &2060527350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,8 +1346,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.002939239, y: 0.0012655128, z: 0.020042997}
-  m_Center: {x: 0.00033485625, y: -0.000055113927, z: 0.0015145919}
+  m_Size: {x: 0.14041482, y: 0.03868952, z: 0.7550819}
+  m_Center: {x: -0.01779289, y: 0.00014608585, z: 0.24993253}
 --- !u!114 &210362881
 MonoBehaviour:
   m_ObjectHideFlags: 0
