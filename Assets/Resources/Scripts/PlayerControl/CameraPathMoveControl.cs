@@ -9,8 +9,9 @@ public class CameraPathMoveControl : MonoBehaviour
     public static event Action onReachedFinish;
 
     [SerializeField] Camera _playerCamera;
-    [SerializeField] PathCreator _path;
+    [SerializeField] Path _path;
     [Header("Move speed settings")]
+    [SerializeField] float _minDistanceToGoOnNextPoint;
     [SerializeField] float _defaultMoveSpeed;
     [SerializeField] float _slowMoveSpeed;
     float _currentMoveSpeed;
@@ -21,11 +22,11 @@ public class CameraPathMoveControl : MonoBehaviour
     float _currentFov;
     [Header("Look settings")]
     [SerializeField] float _smoothLook;
-    [SerializeField] float _lookDuration;
+    [SerializeField] float _targetLookDuration;
     Coroutine _clearLookTarget;
 
-    float distanceTraveled;
-    float _maxPathDistance;
+    int _pathLenght;
+    int _currentPathPoint;
 
     bool _isReachedEnd;
     bool _isDead;
@@ -34,7 +35,7 @@ public class CameraPathMoveControl : MonoBehaviour
 
     private void Start()
     {
-        _maxPathDistance = _path.path.length;
+        _pathLenght = _path.lenght;
         _isReachedEnd = false;
         _isDead = false;
         _currentMoveSpeed = _defaultMoveSpeed;
@@ -46,16 +47,16 @@ public class CameraPathMoveControl : MonoBehaviour
         if (_isDead) return;
         if (_isReachedEnd) return;
 
-        distanceTraveled += _currentMoveSpeed * Time.deltaTime;
+        Transform nextPoint = _path.GetPoint(_currentPathPoint);
 
-        if(distanceTraveled >= _maxPathDistance)
+        if (_currentPathPoint >= _pathLenght)
         {
             _isReachedEnd = true;
-            distanceTraveled = _maxPathDistance - 0.01f;
             onReachedFinish?.Invoke();
+            return;
         }
         //moving along path
-        transform.position = _path.path.GetPointAtDistance(distanceTraveled);
+        transform.position = Vector3.MoveTowards(transform.position, nextPoint.position, _currentMoveSpeed * Time.deltaTime);
         //looking on target or get rotation at path point
         if(_lookTarget != null)
         {
@@ -65,11 +66,12 @@ public class CameraPathMoveControl : MonoBehaviour
         }
         else
         {
-            Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
-            transform.rotation = Quaternion.Euler(nextRotation.eulerAngles.x, nextRotation.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, nextPoint.rotation, _smoothLook * Time.deltaTime);
         }
-
+        //camera fov control
         _playerCamera.fieldOfView = Mathf.MoveTowards(_playerCamera.fieldOfView, _currentFov, _smoothFov * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, nextPoint.position) < _minDistanceToGoOnNextPoint) _currentPathPoint++;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -106,7 +108,7 @@ public class CameraPathMoveControl : MonoBehaviour
     }
     IEnumerator ClearLookTarget()
     {
-        yield return new WaitForSeconds(_lookDuration);
+        yield return new WaitForSeconds(_targetLookDuration);
         _lookTarget = null;
     }
     private void OnEnable()

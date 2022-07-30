@@ -7,10 +7,13 @@ public abstract class Enemy : CutterBehaviour
     public static event Action onDeath;
 
     [Space(10)]
+    [Header("Zone settings")]
     [SerializeField] protected EnemyRange _range;
     [SerializeField] protected EnemySlow _slow;
+    [Header("Animation settings")]
     [SerializeField] protected float _slowAnimationSpeed;
     [SerializeField] protected Animator _animator;
+    [Header("Slice settings")]
     protected PlaneBehaviour _slicer;
     [SerializeField] protected ParticleSystem _deathEffect;
 
