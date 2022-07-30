@@ -7,9 +7,17 @@ public class CameraPathMoveControl : MonoBehaviour
     public static event Action onDeath;
     public static event Action onReachedFinish;
 
+    [SerializeField] Camera _playerCamera;
     [SerializeField] PathCreator _path;
     [Header("Move speed settings")]
-    [SerializeField] float _moveSpeed;
+    [SerializeField] float _defaultMoveSpeed;
+    [SerializeField] float _slowMoveSpeed;
+    float _currentMoveSpeed;
+    [Header("FOW settings")]
+    [SerializeField] float _defaultFov;
+    [SerializeField] float _slowFov;
+    [SerializeField] float _smoothFov;
+    float _currentFov;
 
     float distanceTraveled;
     float _maxPathDistance;
@@ -22,6 +30,8 @@ public class CameraPathMoveControl : MonoBehaviour
         _maxPathDistance = _path.path.length;
         _isReachedEnd = false;
         _isDead = false;
+        _currentMoveSpeed = _defaultMoveSpeed;
+        _currentFov = _defaultFov;
     }
 
     private void Update()
@@ -29,7 +39,7 @@ public class CameraPathMoveControl : MonoBehaviour
         if (_isDead) return;
         if (_isReachedEnd) return;
 
-        distanceTraveled += _moveSpeed * Time.deltaTime;
+        distanceTraveled += _currentMoveSpeed * Time.deltaTime;
 
         if(distanceTraveled >= _maxPathDistance)
         {
@@ -42,6 +52,8 @@ public class CameraPathMoveControl : MonoBehaviour
         Quaternion nextRotation = _path.path.GetRotationAtDistance(distanceTraveled);
 
         transform.rotation = Quaternion.Euler(nextRotation.eulerAngles.x, nextRotation.eulerAngles.y, 0);
+
+        _playerCamera.fieldOfView = Mathf.MoveTowards(_playerCamera.fieldOfView, _currentFov, _smoothFov * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,5 +63,20 @@ public class CameraPathMoveControl : MonoBehaviour
             onDeath?.Invoke();
             Debug.Log("я умир");
         }
+        if (other.CompareTag("EnemyRange"))
+        {
+            if (other.GetComponent<EnemyRange>().needSlowMove)
+            {
+                SetSlowMovement();
+            }
+        }
+    }
+    void SetSlowMovement()
+    {
+        _currentMoveSpeed = _slowMoveSpeed;
+    }
+    void SetDefaultMovement()
+    {
+        _currentMoveSpeed = _defaultMoveSpeed;
     }
 }
