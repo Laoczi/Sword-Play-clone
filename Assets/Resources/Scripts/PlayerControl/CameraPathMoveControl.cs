@@ -84,7 +84,9 @@ public class CameraPathMoveControl : MonoBehaviour
         if (other.CompareTag("EnemySlow"))
         {
             SetSlowMovement();
-
+        }
+        if (other.CompareTag("EnemyFov"))
+        {
             _lookTarget = other.transform;
 
             if (_clearLookTarget != null) StopCoroutine(_clearLookTarget);
@@ -96,7 +98,7 @@ public class CameraPathMoveControl : MonoBehaviour
         _currentMoveSpeed = _slowMoveSpeed;
         _currentFov = _slowFov;
     }
-    void SetDefaultMovement()
+    void SetDefaultMovementAndLook()
     {
         _currentMoveSpeed = _defaultMoveSpeed;
         _currentFov = _defaultFov;
@@ -109,16 +111,17 @@ public class CameraPathMoveControl : MonoBehaviour
     IEnumerator ClearLookTarget()
     {
         yield return new WaitForSeconds(_targetLookDuration);
+        _clearLookTarget = null;
         _lookTarget = null;
     }
     private void OnEnable()
     {
-        Bullet.onDead += SetDefaultMovement;
-        Enemy.onDeath += SetDefaultMovement;
+        Bullet.onDead += SetDefaultMovementAndLook;
+        Enemy.onDeath += SetDefaultMovementAndLook;
     }
     private void OnDisable()
     {
-        Bullet.onDead -= SetDefaultMovement;
-        Enemy.onDeath -= SetDefaultMovement;
+        Bullet.onDead -= SetDefaultMovementAndLook;
+        Enemy.onDeath -= SetDefaultMovementAndLook;
     }
 }
