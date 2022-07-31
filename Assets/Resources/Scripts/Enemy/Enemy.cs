@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     [Header("Zone settings")]
     [SerializeField] protected EnemyRange _range;
     [SerializeField] protected EnemySlow _slow;
+    [SerializeField] protected GameObject _fov;
     [Header("Animation settings")]
     [SerializeField] protected float _slowAnimationSpeed;
     [SerializeField] protected Animator _animator;
@@ -30,6 +31,7 @@ public abstract class Enemy : MonoBehaviour
     protected void CallOnDeathEvent() {
         Destroy(_range.gameObject);
         if (_slow != null) Destroy(_slow.gameObject);
+        if (_fov != null) Destroy(_fov.gameObject);
         onDeath?.Invoke(); 
     }
     private void OnEnable()
