@@ -22,8 +22,6 @@ public class CameraPathMoveControl : MonoBehaviour
     float _currentFov;
     [Header("Look settings")]
     [SerializeField] float _smoothLook;
-    [SerializeField] float _targetLookDuration;
-    Coroutine _clearLookTarget;
 
     int _pathLenght;
     int _currentPathPoint;
@@ -58,15 +56,13 @@ public class CameraPathMoveControl : MonoBehaviour
         //moving along path
         transform.position = Vector3.MoveTowards(transform.position, nextPoint.position, _currentMoveSpeed * Time.deltaTime);
         //looking on target or get rotation at path point
-        if(_lookTarget != null)
+        if(_lookTarget == null)
         {
-            Vector3 lookDirection = _lookTarget.position - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _smoothLook * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, nextPoint.rotation, _smoothLook * Time.deltaTime);
         }
         else
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, nextPoint.rotation, _smoothLook * Time.deltaTime);
+
         }
         //camera fov control
         _playerCamera.fieldOfView = Mathf.MoveTowards(_playerCamera.fieldOfView, _currentFov, _smoothFov * Time.deltaTime);
@@ -85,34 +81,31 @@ public class CameraPathMoveControl : MonoBehaviour
         {
             SetSlowMovement();
         }
+        
+    }
+    private void OnTriggerStay(Collider other)
+    {
         if (other.CompareTag("EnemyFov"))
         {
+            _currentFov = _slowFov;
+
             _lookTarget = other.transform;
 
-            if (_clearLookTarget != null) StopCoroutine(_clearLookTarget);
-            _clearLookTarget = StartCoroutine(ClearLookTarget());
+            Vector3 lookDirection = _lookTarget.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _smoothLook * Time.deltaTime);
+
+            _lookTarget = null;
+            _currentFov = _defaultFov;
         }
     }
     void SetSlowMovement()
     {
         _currentMoveSpeed = _slowMoveSpeed;
-        _currentFov = _slowFov;
     }
     void SetDefaultMovementAndLook()
     {
         _currentMoveSpeed = _defaultMoveSpeed;
-        _currentFov = _defaultFov;
-
-        if (_clearLookTarget != null) StopCoroutine(_clearLookTarget);
-
-        _clearLookTarget = null;
-        _lookTarget = null;
-    }
-    IEnumerator ClearLookTarget()
-    {
-        yield return new WaitForSeconds(_targetLookDuration);
-        _clearLookTarget = null;
-        _lookTarget = null;
     }
     private void OnEnable()
     {
