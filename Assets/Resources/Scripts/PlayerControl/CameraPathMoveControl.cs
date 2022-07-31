@@ -62,7 +62,9 @@ public class CameraPathMoveControl : MonoBehaviour
         }
         else
         {
-
+            Vector3 lookDirection = _lookTarget.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _smoothLook * Time.deltaTime);
         }
         //camera fov control
         _playerCamera.fieldOfView = Mathf.MoveTowards(_playerCamera.fieldOfView, _currentFov, _smoothFov * Time.deltaTime);
@@ -81,22 +83,11 @@ public class CameraPathMoveControl : MonoBehaviour
         {
             SetSlowMovement();
         }
-        
-    }
-    private void OnTriggerStay(Collider other)
-    {
         if (other.CompareTag("EnemyFov"))
         {
             _currentFov = _slowFov;
-
             _lookTarget = other.transform;
 
-            Vector3 lookDirection = _lookTarget.position - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _smoothLook * Time.deltaTime);
-
-            _lookTarget = null;
-            _currentFov = _defaultFov;
         }
     }
     void SetSlowMovement()
@@ -106,6 +97,8 @@ public class CameraPathMoveControl : MonoBehaviour
     void SetDefaultMovementAndLook()
     {
         _currentMoveSpeed = _defaultMoveSpeed;
+        _lookTarget = null;
+        _currentFov = _defaultFov;
     }
     private void OnEnable()
     {
