@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (_isSliced) return;
         if (other.CompareTag("Sword"))
         {
             _isSliced = true;
