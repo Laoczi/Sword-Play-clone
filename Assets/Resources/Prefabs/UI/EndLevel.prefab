@@ -5669,8 +5669,9 @@ GameObject:
   - component: {fileID: 6751551508656756415}
   - component: {fileID: 6751551508656756408}
   - component: {fileID: 6751551508656756414}
+  - component: {fileID: 6751551508241718887}
   m_Layer: 5
-  m_Name: NoThanksText
+  m_Name: NoThanksButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5693,7 +5694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.17148437}
   m_AnchorMax: {x: 0.5, y: 0.17148437}
-  m_AnchoredPosition: {x: 0, y: -49.99994}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6751551508656756415
@@ -5838,6 +5839,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!111 &6751551508241718887
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751551508656756410}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 621185a4a158a824180e1cd019acae9c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 621185a4a158a824180e1cd019acae9c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6751551508667204462
 GameObject:
   m_ObjectHideFlags: 0
@@ -6610,6 +6627,7 @@ GameObject:
   - component: {fileID: 6751551508912547079}
   - component: {fileID: 6751551508912547072}
   - component: {fileID: 6751551508912547073}
+  - component: {fileID: 6751551508241718886}
   m_Layer: 5
   m_Name: NoThanksText
   m_TagString: Untagged
@@ -6634,7 +6652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.17148437}
   m_AnchorMax: {x: 0.5, y: 0.17148437}
-  m_AnchoredPosition: {x: 0, y: -49.99994}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6751551508912547079
@@ -6779,6 +6797,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!111 &6751551508241718886
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751551508912547075}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 621185a4a158a824180e1cd019acae9c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 621185a4a158a824180e1cd019acae9c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6751551508913508059
 GameObject:
   m_ObjectHideFlags: 0
