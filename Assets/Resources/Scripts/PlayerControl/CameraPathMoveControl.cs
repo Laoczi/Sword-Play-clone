@@ -31,6 +31,8 @@ public class CameraPathMoveControl : MonoBehaviour
 
     Transform _lookTarget;
 
+    bool _gameIsStarted;
+
     private void Start()
     {
         _pathLenght = _path.lenght;
@@ -42,6 +44,7 @@ public class CameraPathMoveControl : MonoBehaviour
 
     private void Update()
     {
+        if (_gameIsStarted == false) return;
         if (_isDead) return;
         if (_isReachedEnd) return;
 
@@ -100,13 +103,19 @@ public class CameraPathMoveControl : MonoBehaviour
         _lookTarget = null;
         _currentFov = _defaultFov;
     }
+    void OnStartGame()
+    {
+        _gameIsStarted = true;
+    }
     private void OnEnable()
     {
+        StartTutor.onClick += OnStartGame;
         Bullet.onDead += SetDefaultMovementAndLook;
         Enemy.onDeath += SetDefaultMovementAndLook;
     }
     private void OnDisable()
     {
+        StartTutor.onClick -= OnStartGame;
         Bullet.onDead -= SetDefaultMovementAndLook;
         Enemy.onDeath -= SetDefaultMovementAndLook;
     }
