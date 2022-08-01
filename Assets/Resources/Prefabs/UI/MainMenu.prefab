@@ -2431,6 +2431,7 @@ GameObject:
   - component: {fileID: 5679804657271737915}
   - component: {fileID: 5679804657271737914}
   - component: {fileID: 5679804657271737912}
+  - component: {fileID: 5679804658279781426}
   m_Layer: 5
   m_Name: SkinsButton
   m_TagString: Untagged
@@ -2541,6 +2542,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!111 &5679804658279781426
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679804657271737916}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 2c2b321be7579954980e967fdc714890, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5679804657328773789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,7 +3531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5679804657700305844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4250,8 +4267,9 @@ GameObject:
   - component: {fileID: 5679804657898922099}
   - component: {fileID: 5679804657898922097}
   - component: {fileID: 5679804657898922096}
+  - component: {fileID: 5679804658279781428}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HandIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4315,6 +4333,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &5679804658279781428
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679804657898922098}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 390b558ee041d6743ab885bca01fed20, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5679804657900650230
 GameObject:
   m_ObjectHideFlags: 0
@@ -6585,6 +6619,7 @@ GameObject:
   - component: {fileID: 5679804658537289150}
   - component: {fileID: 5679804658537289121}
   - component: {fileID: 5679804658537289151}
+  - component: {fileID: 5679804658279781424}
   m_Layer: 5
   m_Name: RemoveAdsButton
   m_TagString: Untagged
@@ -6694,6 +6729,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!111 &5679804658279781424
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679804658537289123}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9f26153ad6e3638448f7ab1f59cc08c4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9f26153ad6e3638448f7ab1f59cc08c4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5679804658537567853
 GameObject:
   m_ObjectHideFlags: 0
