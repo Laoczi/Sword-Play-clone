@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
+    public static event Action onChanged;
+
     public static Wallet singleton;
     public float count { get; private set; }
 
@@ -23,6 +24,7 @@ public class Wallet : MonoBehaviour
         if (value > 0)
         {
             count += value;
+            onChanged?.Invoke();
             PlayerPrefs.SetFloat("Money", count);
         }
     }
@@ -31,6 +33,7 @@ public class Wallet : MonoBehaviour
         if (value >= 0 && value <= count)
         {
             count -= value;
+            onChanged?.Invoke();
             PlayerPrefs.SetFloat("Money", count);
             return true;
         }
