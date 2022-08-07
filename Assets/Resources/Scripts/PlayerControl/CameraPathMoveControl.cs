@@ -80,9 +80,11 @@ public class CameraPathMoveControl : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            _isDead = true;
-            onDeath?.Invoke();
-            Debug.Log("я умир");
+            OnDeath();
+        }
+        if (other.CompareTag("Shuriken"))
+        {
+            OnDeath();
         }
         if (other.CompareTag("EnemySlow"))
         {
@@ -94,6 +96,12 @@ public class CameraPathMoveControl : MonoBehaviour
             _lookTarget = other.transform;
 
         }
+    }
+    void OnDeath()
+    {
+        _isDead = true;
+        onDeath?.Invoke();
+        Debug.Log("я умир");
     }
     void SetSlowMovement()
     {
