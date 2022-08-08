@@ -10420,6 +10420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2530309543491540924}
+  - component: {fileID: 4258629645154585089}
   m_Layer: 0
   m_Name: Enemy_Knight_Shield_slowmo
   m_TagString: Untagged
@@ -10443,6 +10444,26 @@ Transform:
   m_Father: {fileID: 8991136417499973019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4258629645154585089
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025899044151115199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d1a856e45ddecce40915902f4a51b762, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5223346760907305704
 GameObject:
   m_ObjectHideFlags: 0
@@ -21042,7 +21063,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8991136417499973019}
-  - component: {fileID: 1346248043}
   - component: {fileID: 1554932748}
   m_Layer: 0
   m_Name: EnemyKnightMain
@@ -21068,26 +21088,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1346248043
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8614610123448016673}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d1a856e45ddecce40915902f4a51b762, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &1554932748
 CapsuleCollider:
   m_ObjectHideFlags: 0
