@@ -4,39 +4,26 @@ using UnityEngine;
 
 public class SkinsShop : MonoBehaviour
 {
+    [SerializeField] GameObject _menu;
     [SerializeField] float _unlockRandomPrice;
-    [SerializeField] GameObject _lockedSkinsParent;
-    [SerializeField] GameObject _unlockedSkinsParent;
+    [SerializeField] SkinUI[] _skins;
 
-    GameObject[] _lockedSkins;
-    GameObject[] _unlockedSkins;
 
     private void Start()
     {
-        _lockedSkins = _lockedSkinsParent.GetComponentsInChildren<GameObject>();
-        _unlockedSkins = _unlockedSkinsParent.GetComponentsInChildren<GameObject>();
-
-        for (int i = 0; i < _lockedSkins.Length; i++)
+        for (int i = 0; i < _skins.Length; i++)
         {
-            if (PlayerPrefs.HasKey("OpenSkin " + i))
-            {
-                _lockedSkins[i].SetActive(false);
-                _unlockedSkins[i].SetActive(true);
-            }
-            else
-            {
-                _lockedSkins[i].SetActive(true);
-                _unlockedSkins[i].SetActive(false);
-            }
+            if (PlayerPrefs.HasKey("OpenSkin " + i)) _skins[i].Open();
+            else _skins[i].Close();
         }
     }
     public void OpenRandom()
     {
         List<int> openedSkinsID = new List<int>();
 
-        for (int i = 0; i < _unlockedSkins.Length; i++)
+        for (int i = 0; i < _skins.Length; i++)
         {
-            if (_unlockedSkins[i].activeInHierarchy) openedSkinsID.Add(i);
+            if (_skins[i].isOpen == false) openedSkinsID.Add(i);
         }
 
         if(openedSkinsID.Count == 0)
@@ -49,8 +36,17 @@ public class SkinsShop : MonoBehaviour
 
         int randomSkin = Random.Range(0, openedSkinsID.Count);
 
-        _lockedSkins[openedSkinsID[randomSkin]].SetActive(false);
-        _unlockedSkins[openedSkinsID[randomSkin]].SetActive(true);
+        _skins[openedSkinsID[randomSkin]].Open();
+        Debug.Log("купили скин " + openedSkinsID[randomSkin]);
+
         PlayerPrefs.SetInt("OpenSkin " + openedSkinsID[randomSkin], 1);
+    }
+    public void HideMenu()
+    {
+        _menu.SetActive(false);
+    }
+    public void ShowMenu()
+    {
+        _menu.SetActive(true);
     }
 }

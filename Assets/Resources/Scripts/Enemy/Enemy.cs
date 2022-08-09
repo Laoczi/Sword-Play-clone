@@ -24,7 +24,7 @@ public abstract class Enemy : MonoBehaviour
     }
     protected abstract void DealDamage(Transform swordTransform);
     protected abstract void OnPlayerEnterRangeZone();
-    private void OnPlayerEnterSlowZone()
+    protected virtual void OnPlayerEnterSlowZone()
     {
         _animator.SetFloat("Speed", _slowAnimationSpeed);
     }

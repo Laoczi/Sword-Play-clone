@@ -17,6 +17,8 @@ public class Wallet : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Money")) count = PlayerPrefs.GetFloat("Money");
         else PlayerPrefs.SetFloat("Money", 0);
+
+        count = 5000;
     }
 
     public void Add(float value)
