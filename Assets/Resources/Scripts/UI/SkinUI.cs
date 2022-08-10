@@ -30,7 +30,7 @@ public class SkinUI : MonoBehaviour
         _closeIcon.SetActive(true);
     }
 
-    void OnClick()
+    public void OnClick()
     {
         if (isOpen)
         {
