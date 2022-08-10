@@ -10,7 +10,7 @@ public class SkinUI : MonoBehaviour
     GameObject _closeIcon;
     public bool isOpen { get; private set; }
     [field: SerializeField] public int id { get; private set; }
-    private void Awake()
+    public void Init()
     {
         _openIcon = transform.GetChild(1).gameObject;
         _closeIcon = transform.GetChild(0).gameObject;

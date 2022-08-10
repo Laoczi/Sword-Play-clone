@@ -21,6 +21,8 @@ public class SkinsShop : MonoBehaviour
 
         for (int i = 0; i < _skins.Length; i++)
         {
+            _skins[i].Init();
+
             if (PlayerPrefs.HasKey("OpenSkin " + i)) _skins[i].Open();
             else _skins[i].Close();
         }
