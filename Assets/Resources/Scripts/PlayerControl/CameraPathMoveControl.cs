@@ -40,8 +40,6 @@ public class CameraPathMoveControl : MonoBehaviour
         _isDead = false;
         _currentMoveSpeed = _defaultMoveSpeed;
         _currentFov = _defaultFov;
-
-        _gameIsStarted = true;
     }
 
     private void Update()
@@ -115,6 +113,7 @@ public class CameraPathMoveControl : MonoBehaviour
     }
     void OnStartGame()
     {
+        Debug.Log("check camera");
         _gameIsStarted = true;
     }
     private void OnEnable()

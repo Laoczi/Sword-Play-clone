@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 1613467025155880303}
   - component: {fileID: 1613467025155880302}
   - component: {fileID: 7488717159538437813}
+  - component: {fileID: 1615505939}
+  - component: {fileID: 1613467023549030242}
+  - component: {fileID: 2515984974697396534}
   m_Layer: 0
   m_Name: GameControllersUI
   m_TagString: Untagged
@@ -80,3 +83,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2109c153cd3ac5a4b9d6719804f20eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1615505939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613467025155880301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4682752a98a7dcb49a96e56d9d623eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menu: {fileID: 0}
+  _unlockRandomPrice: 2300
+  _skins:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _skinIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &1613467023549030242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613467025155880301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42617e473a15334bac0b8c1ad3de88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panel: {fileID: 0}
+  _levelProgress: {fileID: 0}
+  _currentLevelProgress: {fileID: 0}
+  _currentLevel: {fileID: 0}
+--- !u!114 &2515984974697396534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613467025155880301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34290802156189248a1cd05256303179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panel: {fileID: 0}

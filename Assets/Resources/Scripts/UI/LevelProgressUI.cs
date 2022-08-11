@@ -14,18 +14,18 @@ public class LevelProgressUI : MonoBehaviour
     [SerializeField] Color _previousLevelColor;
     [SerializeField] Color _currentLevelColor;
     [SerializeField] Color _nextLevelColor;
-    private void Start()
+    private void OnLevelWasLoaded(int level)
     {
-        int level = LevelProgress.singleton.currentLevel;
+        int currentLevel = LevelProgress.singleton.currentLevel;
         int levelDozens = 0;
 
-        _currentLevel.text = "Level " + level.ToString();
+        _currentLevel.text = "Level " + currentLevel.ToString();
 
-        level -= 1;
+        currentLevel -= 1;
 
-        while (level >= 10)
+        while (currentLevel >= 10)
         {
-            level -= 10;
+            currentLevel -= 10;
             levelDozens++;
         }
 
@@ -42,10 +42,9 @@ public class LevelProgressUI : MonoBehaviour
 
         for (int i = 0; i < _levelProgressPoints.Length; i++)
         {
-            if (i < level) _levelProgressPoints[i].color = _previousLevelColor;
-            else if (i == level) _levelProgressPoints[i].color = _currentLevelColor;
-            else if (i > level) _levelProgressPoints[i].color = _nextLevelColor;
+            if (i < currentLevel) _levelProgressPoints[i].color = _previousLevelColor;
+            else if (i == currentLevel) _levelProgressPoints[i].color = _currentLevelColor;
+            else if (i > currentLevel) _levelProgressPoints[i].color = _nextLevelColor;
         }
-
     }
 }

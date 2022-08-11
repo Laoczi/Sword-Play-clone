@@ -34,6 +34,7 @@ public class LevelProgress : MonoBehaviour
             else
             {
                 ResetCurrentLevel();
+                GenerateLevelsLine();
                 SceneManager.LoadScene(currentLevel);
             }
         }

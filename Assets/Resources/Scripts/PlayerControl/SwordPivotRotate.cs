@@ -18,15 +18,32 @@ public class SwordPivotRotate : MonoBehaviour
     Vector2 _tapPosition;
     Vector2 _swipeDelta;
 
+    bool _isGameStarted;
+
     private void Start()
     {
         _rotationBeforeSwipe = Vector2.zero;
         _tapPosition = Vector2.zero;
         _swipeDelta = Vector2.zero;
-    }
 
+        _isGameStarted = false;
+    }
+    void OnStartGame()
+    {
+        _isGameStarted = true;
+    }
+    private void OnEnable()
+    {
+        StartTutor.onClick += OnStartGame;
+    }
+    private void OnDisable()
+    {
+        StartTutor.onClick -= OnStartGame;
+    }
     private void Update()
     {
+        if (_isGameStarted == false) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             _tapPosition = Input.mousePosition;
