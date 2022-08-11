@@ -16,7 +16,7 @@ public class LevelProgressUI : MonoBehaviour
     [SerializeField] Color _nextLevelColor;
     private void Start()
     {
-        int level = LevelProgress.singleton.level;
+        int level = LevelProgress.singleton.currentLevel;
         int levelDozens = 0;
 
         _currentLevel.text = "Level " + level.ToString();

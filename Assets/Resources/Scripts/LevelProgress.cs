@@ -7,7 +7,10 @@ public class LevelProgress : MonoBehaviour
 {
     public static LevelProgress singleton;
 
-    public int level { get; private set; }
+
+    int[] levels;
+
+    public int currentLevel { get; private set; }
 
     private void Awake()
     {
@@ -16,15 +19,65 @@ public class LevelProgress : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        level = 1;
-        if (PlayerPrefs.HasKey("level")) level = PlayerPrefs.GetInt("level");
+        levels = new int[40];
 
-        if (SceneManager.GetActiveScene().buildIndex == 0) SceneManager.LoadScene(level);
+        for (int i = 1; i < 10; i++)
+        {
+            levels[i] = i;
+        }
+
+        for (int i = 1; i < (levels.Length / 10); i++)
+        {
+            int[] currentLevelChunk = new int[10];
+            int[] mixLevels = new int[8];
+            for (int j = 1; j < 9; j++)
+            {
+                currentLevelChunk[j] = (i * 10) + j;
+                mixLevels[j - 1] = currentLevelChunk[j];
+            }
+            int[] alreadyMixedLevels = MixLevels(mixLevels);
+            for (int j = 1; j < 9; j++)
+            {
+                currentLevelChunk[j] = alreadyMixedLevels[j - 1];
+            }
+            currentLevelChunk[0] = (i * 10);
+            currentLevelChunk[9] = (i * 10) + 9;
+
+            for (int j = 0; j < 10; j++)
+            {
+                levels[(i * 10) + j] = currentLevelChunk[j];
+            }
+        }
+
+        foreach (var item in levels)
+        {
+            Debug.Log(item);
+        }
+
+        return;
+
+        currentLevel = 1;
+        if (PlayerPrefs.HasKey("level")) currentLevel = PlayerPrefs.GetInt("level");
+
+        if (SceneManager.GetActiveScene().buildIndex == 0) SceneManager.LoadScene(currentLevel);
+    }
+    int[] MixLevels(int[] levels)
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            int currentLevel = levels[i];
+
+            int randomIndex = Random.Range(i, levels.Length);
+
+            levels[i] = levels[randomIndex];
+            levels[randomIndex] = currentLevel;
+        }
+        return levels;
     }
     public void GoToNextLevel()
     {
-        level++;
-        PlayerPrefs.SetInt("level", level);
-        SceneManager.LoadScene(level);
+        currentLevel++;
+        PlayerPrefs.SetInt("level", currentLevel);
+        SceneManager.LoadScene(currentLevel);
     }
 }
