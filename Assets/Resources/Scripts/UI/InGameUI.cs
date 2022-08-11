@@ -15,7 +15,7 @@ public class InGameUI : MonoBehaviour
     Transform _playerTransform;
     Transform _endPoint;
     float _baseDistance;
-
+    
     private void Start()
     {
         _panel.SetActive(false);
@@ -53,6 +53,6 @@ public class InGameUI : MonoBehaviour
     private void OnDisable()
     {
         StartTutor.onClick -= OnStartGame;
-        CameraPathMoveControl.onReachedFinish += OnEndGame;
+        CameraPathMoveControl.onReachedFinish -= OnEndGame;
     }
 }
