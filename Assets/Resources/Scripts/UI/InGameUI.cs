@@ -26,8 +26,8 @@ public class InGameUI : MonoBehaviour
 
         _baseDistance = Vector3.Distance(_playerTransform.position, _endPoint.position);
 
-        _currentLevelProgress.text = LevelProgress.singleton.currentLevel.ToString();
-        _currentLevel.text = "Level " + LevelProgress.singleton.currentLevel.ToString();
+        _currentLevelProgress.text = LevelProgress.currentLevel.ToString();
+        _currentLevel.text = "Level " + LevelProgress.currentLevel.ToString();
     }
     void OnStartGame()
     {

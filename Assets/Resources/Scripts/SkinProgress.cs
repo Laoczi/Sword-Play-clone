@@ -10,6 +10,7 @@ public class SkinProgress : MonoBehaviour
     int _currentSkinID;
     float _currentSkinProgress;
     [SerializeField] float _progressPointsForCompletedLevel;
+    [SerializeField] GameObject _progressMenu;
     [SerializeField] GameObject[] _skinIcons;
     [SerializeField] Image _progressBar;
     [SerializeField] TextMeshProUGUI _progressText;
@@ -17,13 +18,15 @@ public class SkinProgress : MonoBehaviour
     {
         _currentSkinID = 1;
 
-        for (int i = 0; i < 12; i++)//всего 12 скинов
+        if (PlayerPrefs.HasKey("openedSkin"))//если есть скин который сейчас открываем (те мы выбрали его айди)
         {
-            if (PlayerPrefs.HasKey("OpenSkin " + i) == false)
-            {
-                _currentSkinID = i;
-                break;
-            }
+            _currentSkinID = PlayerPrefs.GetInt("openedSkin");//то мы выгружаем его из сохранений и потом проверяем, есть ли уже такой открытый
+
+            if(PlayerPrefs.HasKey("OpenSkin " + _currentSkinProgress)) SetNewOpenedSkin();//если открытый такой есть, (купили во время прокачки), то обнуляем прокачку и выбираем новый
+        }
+        else
+        {
+            SetNewOpenedSkin();
         }
 
         _currentSkinProgress = 0;
@@ -31,6 +34,22 @@ public class SkinProgress : MonoBehaviour
         if (PlayerPrefs.HasKey("skinProgress")) _currentSkinProgress = PlayerPrefs.GetFloat("skinProgress");
 
         for (int i = 0; i < _skinIcons.Length; i++) _skinIcons[i].SetActive(i == (_currentSkinID - 1));
+    }
+    void SetNewOpenedSkin()
+    {
+        ResetProgress();
+
+        for (int i = 0; i < _skinIcons.Length; i++)//если все открыты, то мы просто отрубаем нужную панель
+        {
+            if (PlayerPrefs.HasKey("OpenSkin " + i) == false)
+            {
+                _currentSkinID = i;
+                PlayerPrefs.SetInt("openedSkin", i);
+                return;
+            }
+        }
+
+        _progressMenu.SetActive(false);
     }
     void OnLevelEnd()
     {

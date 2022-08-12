@@ -11,10 +11,12 @@ public class LevelProgress : MonoBehaviour
 
     int[] levels;
 
-    public int currentLevel { get; private set; }
+    public static int currentLevel { get; private set; }
 
     private void Awake()
     {
+        //PlayerPrefs.DeleteAll();
+
         if (singleton == null) singleton = this;
         else Destroy(this.gameObject);
 
@@ -101,12 +103,12 @@ public class LevelProgress : MonoBehaviour
     void ResetCurrentLevel()
     {
         currentLevel = 1;
-        PlayerPrefs.SetInt("level", currentLevel);
+        PlayerPrefs.SetInt("currentLevel", currentLevel);
     }
     public void GoToNextLevel()
     {
         currentLevel++;
-        PlayerPrefs.SetInt("level", currentLevel);
+        PlayerPrefs.SetInt("currentLevel", currentLevel);
 
         if (currentLevel < scenesCount)
         {
