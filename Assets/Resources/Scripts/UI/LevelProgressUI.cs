@@ -14,7 +14,7 @@ public class LevelProgressUI : MonoBehaviour
     [SerializeField] Color _previousLevelColor;
     [SerializeField] Color _currentLevelColor;
     [SerializeField] Color _nextLevelColor;
-    private void OnLevelWasLoaded(int level)
+    private void Start()
     {
         int currentLevel = LevelProgress.singleton.currentLevel;
         int levelDozens = 0;

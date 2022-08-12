@@ -12,7 +12,7 @@ public class SkinsShop : MonoBehaviour
     int _previousSkinIconID;
 
 
-    private void Start()
+    private void Awake()
     {
         if(PlayerPrefs.HasKey("OpenSkin 0") == false) PlayerPrefs.SetInt("OpenSkin 0", 1);
 

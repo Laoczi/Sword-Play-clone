@@ -15,7 +15,6 @@ public class StartTutor : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         if (_isAlreadyClick) return;
-        Debug.Log("check tutor");
         _isAlreadyClick = true;
         onClick?.Invoke();
         this.gameObject.SetActive(false);

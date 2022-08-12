@@ -113,7 +113,6 @@ public class CameraPathMoveControl : MonoBehaviour
     }
     void OnStartGame()
     {
-        Debug.Log("check camera");
         _gameIsStarted = true;
     }
     private void OnEnable()
