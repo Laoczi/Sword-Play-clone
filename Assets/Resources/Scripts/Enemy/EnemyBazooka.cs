@@ -34,9 +34,9 @@ public class EnemyBazooka : Enemy
         {
             _animator.SetTrigger("Attack");
             yield return new WaitForSeconds(_bulletSpawnDelay);
-            GameObject bullet = Instantiate(_bullet);
-            bullet.transform.position = _bulletSpawnPoint.position;
-            bullet.transform.forward = _bulletSpawnPoint.forward;
+            GameObject bullet = Instantiate(_bullet, _bulletSpawnPoint.position, Quaternion.LookRotation(_bulletSpawnPoint.forward));
+            //bullet.transform.position = _bulletSpawnPoint.position;
+            //bullet.transform.forward = _bulletSpawnPoint.forward;
 
             count++;
         }
