@@ -97,6 +97,7 @@ public class CameraPathMoveControl : MonoBehaviour
     }
     void OnDeath()
     {
+        GetComponent<Animator>().SetTrigger("Death");
         _isDead = true;
         onDeath?.Invoke();
         Debug.Log("я умир");
