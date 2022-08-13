@@ -31,8 +31,8 @@ public class EnemyShuriken : Enemy
         _animator.SetTrigger("Attack");
         yield return new WaitForSeconds(_delayBeforeSpawnShuriken);
 
-        Shuriken shuriken = Instantiate(_shuriken);
-        shuriken.transform.position = _shurikenSpawnPoint.position;
-        shuriken.transform.forward = _shurikenSpawnPoint.forward;
+        Shuriken shuriken = Instantiate(_shuriken, _shurikenSpawnPoint.position, Quaternion.LookRotation(_shurikenSpawnPoint.forward));
+        //shuriken.transform.position = _shurikenSpawnPoint.position;
+        //shuriken.transform.forward = _shurikenSpawnPoint.forward;
     }
 }

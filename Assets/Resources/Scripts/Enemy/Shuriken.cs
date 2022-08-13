@@ -16,7 +16,7 @@ public class Shuriken : MonoBehaviour
     private void OnEnable()
     {
         _currentMoveSpeed = _baseMoveSpeed;
-        direction = transform.forward * -1;
+        direction = transform.forward;
     }
 
     private void Update()
