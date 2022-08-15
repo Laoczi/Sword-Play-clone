@@ -21,8 +21,7 @@ public class SkinProgress : MonoBehaviour
         if (PlayerPrefs.HasKey("openedSkin"))//если есть скин который сейчас открываем (те мы выбрали его айди)
         {
             _currentSkinID = PlayerPrefs.GetInt("openedSkin");//то мы выгружаем его из сохранений и потом проверяем, есть ли уже такой открытый
-
-            if(PlayerPrefs.HasKey("OpenSkin " + _currentSkinProgress)) SetNewOpenedSkin();//если открытый такой есть, (купили во время прокачки), то обнуляем прокачку и выбираем новый
+            if(PlayerPrefs.HasKey("OpenSkin " + _currentSkinID)) SetNewOpenedSkin();//если открытый такой есть, (купили во время прокачки), то обнуляем прокачку и выбираем новый
         }
         else
         {
@@ -54,9 +53,9 @@ public class SkinProgress : MonoBehaviour
     void OnLevelEnd()
     {
         _currentSkinProgress += _progressPointsForCompletedLevel;
-        PlayerPrefs.SetFloat("skinProgress", _currentSkinProgress);
-
         if (_currentSkinProgress > 100) _currentSkinProgress = 100;
+
+        PlayerPrefs.SetFloat("skinProgress", _currentSkinProgress);
 
         _progressBar.fillAmount = _currentSkinProgress / 100;
         _progressText.text = _currentSkinProgress.ToString() + "%";
