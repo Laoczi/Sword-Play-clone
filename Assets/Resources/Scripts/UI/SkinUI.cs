@@ -8,6 +8,9 @@ public class SkinUI : MonoBehaviour
 
     GameObject _openIcon;
     GameObject _closeIcon;
+
+    GameObject _frame;
+
     public bool isOpen { get; private set; }
     [field: SerializeField] public int id { get; private set; }
     public void Init()
@@ -15,11 +18,16 @@ public class SkinUI : MonoBehaviour
         _openIcon = transform.GetChild(1).gameObject;
         _closeIcon = transform.GetChild(0).gameObject;
 
+        _frame = _openIcon.transform.GetChild(1).gameObject;
+
+        _frame.SetActive(false);
+
         //GetComponent<Button>().onClick.AddListener(OnClick);
     }
     public void Open()
     {
         isOpen = true;
+        _frame.SetActive(true);
         _openIcon.SetActive(true);
         _closeIcon.SetActive(false);
     }
