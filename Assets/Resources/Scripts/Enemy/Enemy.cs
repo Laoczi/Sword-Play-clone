@@ -5,6 +5,7 @@ using DynamicMeshCutter;
 public abstract class Enemy : MonoBehaviour
 {
     public static event Action onDeath;
+    public static event Action onShoot;
 
     [Space(10)]
     [Header("Zone settings")]
@@ -34,6 +35,7 @@ public abstract class Enemy : MonoBehaviour
         if (_fov != null) Destroy(_fov.gameObject);
         onDeath?.Invoke(); 
     }
+    protected void CallOnShootEvent() { onShoot?.Invoke(); }
     private void OnEnable()
     {
         _slicer = GetComponent<PlaneBehaviour>();
