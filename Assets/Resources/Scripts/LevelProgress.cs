@@ -11,11 +11,13 @@ public class LevelProgress : MonoBehaviour
 
     int[] levels;
 
+    [SerializeField] bool обнулитьѕрогресс;
+
     public static int currentLevel { get; private set; }
 
     private void Awake()
     {
-        //PlayerPrefs.DeleteAll();
+        if(обнулитьѕрогресс) PlayerPrefs.DeleteAll();
 
         if (singleton == null) singleton = this;
         else Destroy(this.gameObject);
