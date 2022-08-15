@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 public class SwordFollow : MonoBehaviour
 {
+    public static event Action onTouchEnemy;
+
     [SerializeField] Transform _positionPivot;
     [SerializeField] Transform _rotationPivot;
     [SerializeField] float _smoothTime;
@@ -22,5 +24,9 @@ public class SwordFollow : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(_rotationPivot.localEulerAngles.x, _rotationPivot.localEulerAngles.y, angle);
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy")) onTouchEnemy?.Invoke();
     }
 }

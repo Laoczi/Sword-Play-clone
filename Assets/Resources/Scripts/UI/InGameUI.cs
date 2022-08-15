@@ -49,10 +49,12 @@ public class InGameUI : MonoBehaviour
     {
         StartTutor.onClick += OnStartGame;
         CameraPathMoveControl.onReachedFinish += OnEndGame;
+        CameraPathMoveControl.onDeath += OnEndGame;
     }
     private void OnDisable()
     {
         StartTutor.onClick -= OnStartGame;
         CameraPathMoveControl.onReachedFinish -= OnEndGame;
+        CameraPathMoveControl.onDeath -= OnEndGame;
     }
 }

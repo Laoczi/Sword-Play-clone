@@ -21,9 +21,9 @@ public class GameSettingsUI : MonoBehaviour
     {
         _menu.SetActive(false);
 
-        _sound.SetState(GameSettings.singleton.sound);
-        _music.SetState(GameSettings.singleton.music);
-        _vibro.SetState(GameSettings.singleton.vibro);
+        _sound.SetState(GameSettings.sound);
+        _music.SetState(GameSettings.music);
+        _vibro.SetState(GameSettings.vibro);
     }
 
     public void Show()
@@ -38,17 +38,17 @@ public class GameSettingsUI : MonoBehaviour
     public void ChangeSound()
     {
         onChangeSetting?.Invoke(SettingType.sound);
-        _sound.SetState(GameSettings.singleton.sound);
+        _sound.SetState(GameSettings.sound);
     }
     public void ChangeMusic()
     {
         onChangeSetting?.Invoke(SettingType.music);
-        _music.SetState(GameSettings.singleton.music);
+        _music.SetState(GameSettings.music);
     }
     public void ChangeVibro()
     {
         onChangeSetting?.Invoke(SettingType.vibro);
-        _vibro.SetState(GameSettings.singleton.vibro);
+        _vibro.SetState(GameSettings.vibro);
     }
 }
 [System.Serializable]

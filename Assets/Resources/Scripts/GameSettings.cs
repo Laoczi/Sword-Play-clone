@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class GameSettings : MonoBehaviour
 {
-    public static GameSettings singleton;
-
-    public bool sound { get; private set; }
-    public bool music { get; private set; }
-    public bool vibro { get; private set; }
+    public static bool sound { get; private set; }
+    public static bool music { get; private set; }
+    public static bool vibro { get; private set; }
 
     private void Awake()
     {
-        if (singleton == null) singleton = this;
-        else Destroy(this.gameObject);
 
         sound = true;
         music = true;
