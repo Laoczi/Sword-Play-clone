@@ -31,6 +31,7 @@ public class EndLevelUI : MonoBehaviour
     }
     void OnOpenSkin(int id)
     {
+        _panel.SetActive(true);
         _skinProgressPanel.SetActive(false);
         _newSkinPanel.SetActive(true);
         _newSkinIcons[id - 1].SetActive(true);
@@ -42,7 +43,7 @@ public class EndLevelUI : MonoBehaviour
     }
     private void OnDisable()
     {
-        SkinProgress.onOpenSkin += OnOpenSkin;
+        SkinProgress.onOpenSkin -= OnOpenSkin;
         CameraPathMoveControl.onReachedFinish -= OnEndGame;
     }
 }
