@@ -13,7 +13,9 @@ public class LevelProgress : MonoBehaviour
 
     [SerializeField] bool обнулитьѕрогресс;
 
-    public static int currentLevel { get; private set; }
+    public static int level { get; private set; }
+
+    static int currentLevelProgress;
 
     private void Awake()
     {
@@ -24,28 +26,31 @@ public class LevelProgress : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        currentLevel = 1;
+        level = 1;
+        currentLevelProgress = 1;
+
+        if (PlayerPrefs.HasKey("Level")) level = PlayerPrefs.GetInt("Level");
 
         if (PlayerPrefs.HasKey("LevelsIsGenerated"))
         {
-            if (PlayerPrefs.HasKey("currentLevel")) currentLevel = PlayerPrefs.GetInt("currentLevel");
+            if (PlayerPrefs.HasKey("currentLevel")) currentLevelProgress = PlayerPrefs.GetInt("currentLevel");
 
-            if(currentLevel < scenesCount)
+            if (currentLevelProgress < scenesCount)
             {
-                int currentLevelIndex = PlayerPrefs.GetInt("GeneratedLevel " + currentLevel);
+                int currentLevelIndex = PlayerPrefs.GetInt("GeneratedLevel " + currentLevelProgress);
                 SceneManager.LoadScene(currentLevelIndex);
             }
             else
             {
                 ResetCurrentLevel();
                 GenerateLevelsLine();
-                SceneManager.LoadScene(currentLevel);
+                SceneManager.LoadScene(currentLevelProgress);
             }
         }
         else
         {
             GenerateLevelsLine();
-            SceneManager.LoadScene(currentLevel);
+            SceneManager.LoadScene(currentLevelProgress);
         }
     }
     void GenerateLevelsLine()
@@ -104,24 +109,27 @@ public class LevelProgress : MonoBehaviour
     }
     void ResetCurrentLevel()
     {
-        currentLevel = 1;
-        PlayerPrefs.SetInt("currentLevel", currentLevel);
+        currentLevelProgress = 11;
+        PlayerPrefs.SetInt("currentLevel", currentLevelProgress);
     }
     public void GoToNextLevel()
     {
-        currentLevel++;
-        PlayerPrefs.SetInt("currentLevel", currentLevel);
+        currentLevelProgress++;
+        level++;
 
-        if (currentLevel < scenesCount)
+        PlayerPrefs.SetInt("currentLevel", currentLevelProgress);
+        PlayerPrefs.SetInt("Level", level);
+
+        if (currentLevelProgress < scenesCount)
         {
-            int currentLevelIndex = PlayerPrefs.GetInt("GeneratedLevel " + currentLevel);
+            int currentLevelIndex = PlayerPrefs.GetInt("GeneratedLevel " + currentLevelProgress);
             SceneManager.LoadScene(currentLevelIndex);
         }
         else
         {
             ResetCurrentLevel();
             GenerateLevelsLine();
-            SceneManager.LoadScene(currentLevel);
+            SceneManager.LoadScene(currentLevelProgress);
         }
     }
 }
