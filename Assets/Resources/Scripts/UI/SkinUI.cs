@@ -27,7 +27,6 @@ public class SkinUI : MonoBehaviour
     public void Open()
     {
         isOpen = true;
-        _frame.SetActive(true);
         _openIcon.SetActive(true);
         _closeIcon.SetActive(false);
     }
@@ -37,12 +36,23 @@ public class SkinUI : MonoBehaviour
         _openIcon.SetActive(false);
         _closeIcon.SetActive(true);
     }
-
+    private void OnEnable()
+    {
+        SkinUI.onChoiceSkin += OnChoice;
+    }
+    private void OnDisable()
+    {
+        SkinUI.onChoiceSkin -= OnChoice;
+    }
+    void OnChoice(int id)
+    {
+        _frame.SetActive(this.id == id);
+    }
     public void OnClick()
     {
         if (isOpen)
         {
-            Debug.Log("choice " + id);
+            Debug.Log("choice " + id); 
             onChoiceSkin?.Invoke(id);
         }
     }

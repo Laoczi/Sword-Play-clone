@@ -34,8 +34,8 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Sword"))
         {
             _isSliced = true;
-            tag = "Untagged";
             onDead?.Invoke();
+            GetComponent<Collider>().enabled = false;
             _slicer.Cut(other.transform);
         }
     }
