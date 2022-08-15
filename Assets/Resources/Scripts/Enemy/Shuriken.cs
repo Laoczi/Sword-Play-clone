@@ -28,7 +28,6 @@ public class Shuriken : MonoBehaviour
     {
         if (other.CompareTag("Sword") && _isReflected == false)
         {
-            Debug.Log("попал по сюрикену");
             _currentMoveSpeed = _deflectedMoveSpeed;
             direction *= -1;
             this.tag = "Sword";

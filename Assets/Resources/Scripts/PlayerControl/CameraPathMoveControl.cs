@@ -80,10 +80,12 @@ public class CameraPathMoveControl : MonoBehaviour
         {
             OnDeath();
         }
+        /*
         if (other.CompareTag("Shuriken"))
         {
             OnDeath();
         }
+        */
         if (other.CompareTag("EnemySlow"))
         {
             SetSlowMovement();
