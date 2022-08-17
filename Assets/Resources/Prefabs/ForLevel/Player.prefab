@@ -241,7 +241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473922977811380344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.005}
+  m_LocalPosition: {x: 0, y: 0, z: 0.095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -271,9 +271,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 5000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -406,9 +406,9 @@ MonoBehaviour:
   _turnForce: 0.5
   _divisorBySwipeDelta: 20
   _maxXAngle: 7
-  _minXAngle: -30
-  _maxYAngle: 13
-  _minYAngle: -13
+  _minXAngle: -23
+  _maxYAngle: 10
+  _minYAngle: -10
 --- !u!54 &1572105737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1363,12 +1363,12 @@ PrefabInstance:
     - target: {fileID: 4072210357258735372, guid: c7bd1c986dca5f141a8a8717b9d44709,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.165
+      value: -0.123
       objectReference: {fileID: 0}
     - target: {fileID: 4072210357258735372, guid: c7bd1c986dca5f141a8a8717b9d44709,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.689
+      value: 0.516
       objectReference: {fileID: 0}
     - target: {fileID: 4072210357258735372, guid: c7bd1c986dca5f141a8a8717b9d44709,
         type: 3}
