@@ -3844,13 +3844,14 @@ GameObject:
   - component: {fileID: 5679804657700305844}
   - component: {fileID: 5679804657700305842}
   - component: {fileID: 5679804657700305845}
+  - component: {fileID: 6017059522932749356}
   m_Layer: 5
   m_Name: AttantoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5679804657700305844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3866,11 +3867,11 @@ RectTransform:
   m_Father: {fileID: 5679804657271737917}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 15, y: 25}
+  m_AnchorMin: {x: 0.19642863, y: 0.15}
+  m_AnchorMax: {x: 0.19642863, y: 0.15}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 50}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5679804657700305842
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3909,6 +3910,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &6017059522932749356
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5679804657700305847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ca5c6b9d11146549bc53b9ae3e0ae8d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5679804657760156377
 GameObject:
   m_ObjectHideFlags: 0
