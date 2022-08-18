@@ -34,6 +34,8 @@ public class ComboSystem : MonoBehaviour
 
     void OnKillEnemy()
     {
+        if (_currentComboCount >= 2) return;
+
         if (_comboIsStarted == false)
         {
             _comboIsStarted = true;
