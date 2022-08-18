@@ -22,6 +22,8 @@ public class SkinUI : MonoBehaviour
 
         _frame.SetActive(false);
 
+        if (PlayerPrefs.HasKey("ChoicedSkinID")) _frame.SetActive(id == PlayerPrefs.GetInt("ChoicedSkinID"));
+
         //GetComponent<Button>().onClick.AddListener(OnClick);
     }
     public void Open()
