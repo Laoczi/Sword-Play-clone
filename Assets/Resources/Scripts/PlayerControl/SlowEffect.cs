@@ -8,22 +8,20 @@ public class SlowEffect : MonoBehaviour
     [SerializeField] float _duration;
     [SerializeField] float _slowTime;
 
-    Coroutine process;
-
     private void Awake()
     {
         if (singleton == null) singleton = this;
     }
     public void Play()
     {
-        if (process == null) process = StartCoroutine(EffectProcess());
+        StopAllCoroutines();
+        StartCoroutine(EffectProcess());
     }
     IEnumerator EffectProcess()
     {
         Time.timeScale = _slowTime;
         yield return new WaitForSeconds(_duration);
         Time.timeScale = 1;
-        process = null;
     }
     private void OnEnable()
     {
