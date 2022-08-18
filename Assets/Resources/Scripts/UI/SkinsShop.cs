@@ -8,6 +8,7 @@ public class SkinsShop : MonoBehaviour
     [SerializeField] float _unlockRandomPrice;
     [SerializeField] SkinUI[] _skins;
     [SerializeField] GameObject[] _skinIcons;
+    [SerializeField] GameObject _attantoinIcon;
 
     int _previousSkinIconID;
 
@@ -43,6 +44,14 @@ public class SkinsShop : MonoBehaviour
             _previousSkinIconID = 0;
         }
     }
+    private void Start()
+    {
+        UpdateAttantoinIcon();
+    }
+    void UpdateAttantoinIcon()
+    {
+        _attantoinIcon.SetActive(Wallet.singleton.count >= _unlockRandomPrice);
+    }
     void OnChoiceSkin(int id)
     {
         _skinIcons[_previousSkinIconID].SetActive(false);
@@ -52,10 +61,12 @@ public class SkinsShop : MonoBehaviour
     private void OnEnable()
     {
         SkinUI.onChoiceSkin += OnChoiceSkin;
+        Wallet.onChanged += UpdateAttantoinIcon;
     }
     private void OnDisable()
     {
         SkinUI.onChoiceSkin -= OnChoiceSkin;
+        Wallet.onChanged -= UpdateAttantoinIcon;
     }
     public void OpenRandom()
     {
