@@ -11,6 +11,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] Image _levelProgress;
     [SerializeField] TextMeshProUGUI _currentLevelProgress;
     [SerializeField] TextMeshProUGUI _currentLevel;
+    [SerializeField] GameObject _comboEffect;
 
     Transform _playerTransform;
     Transform _endPoint;
@@ -19,6 +20,7 @@ public class InGameUI : MonoBehaviour
     private void Start()
     {
         _panel.SetActive(false);
+        _comboEffect.SetActive(false);
 
         _playerTransform = FindObjectOfType<CameraPathMoveControl>().transform;
         Path path = FindObjectOfType<Path>();
@@ -45,14 +47,26 @@ public class InGameUI : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    void OnStartCombo()
+    {
+        _comboEffect.SetActive(true);
+    }
+    void OnEndCombo()
+    {
+        _comboEffect.SetActive(false);
+    }
     private void OnEnable()
     {
+        ComboSystem.onStartCombo += OnStartCombo;
+        ComboSystem.onEndCombo += OnEndCombo;
         StartTutor.onClick += OnStartGame;
         CameraPathMoveControl.onReachedFinish += OnEndGame;
         CameraPathMoveControl.onDeath += OnEndGame;
     }
     private void OnDisable()
     {
+        ComboSystem.onStartCombo -= OnStartCombo;
+        ComboSystem.onEndCombo -= OnEndCombo;
         StartTutor.onClick -= OnStartGame;
         CameraPathMoveControl.onReachedFinish -= OnEndGame;
         CameraPathMoveControl.onDeath -= OnEndGame;

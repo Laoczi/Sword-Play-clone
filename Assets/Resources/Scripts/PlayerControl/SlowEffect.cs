@@ -25,4 +25,12 @@ public class SlowEffect : MonoBehaviour
         Time.timeScale = 1;
         process = null;
     }
+    private void OnEnable()
+    {
+        ComboSystem.onStartCombo += Play;
+    }
+    private void OnDisable()
+    {
+        ComboSystem.onStartCombo -= Play;
+    }
 }
