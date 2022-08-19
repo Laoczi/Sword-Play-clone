@@ -7,6 +7,7 @@ public class SlowEffect : MonoBehaviour
     public static SlowEffect singleton;
     [SerializeField] float _duration;
     [SerializeField] float _slowTime;
+    [SerializeField] bool _playAfterKillEnemy;
 
     private void Awake()
     {
@@ -14,6 +15,13 @@ public class SlowEffect : MonoBehaviour
     }
     public void Play()
     {
+        StopAllCoroutines();
+        StartCoroutine(EffectProcess());
+    }
+    void OnEnemyDeath()
+    {
+        if (_playAfterKillEnemy == false) return;
+
         StopAllCoroutines();
         StartCoroutine(EffectProcess());
     }
@@ -25,10 +33,12 @@ public class SlowEffect : MonoBehaviour
     }
     private void OnEnable()
     {
+        Enemy.onDeath += OnEnemyDeath;
         ComboSystem.onStartCombo += Play;
     }
     private void OnDisable()
     {
+        Enemy.onDeath -= OnEnemyDeath;
         ComboSystem.onStartCombo -= Play;
     }
 }
