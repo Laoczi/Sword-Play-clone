@@ -34,7 +34,7 @@ public class ComboSystem : MonoBehaviour
 
     void OnKillEnemy()
     {
-        if (_currentComboCount >= 2) return;
+        if (_currentComboCount > 2) return;
 
         if (_comboIsStarted == false)
         {
@@ -46,7 +46,7 @@ public class ComboSystem : MonoBehaviour
             _nextKill = _maxSecondsBetweenKills;
             _currentComboCount++;
 
-            if(_currentComboCount >= 2) onStartCombo?.Invoke();
+            if(_currentComboCount > 2) onStartCombo?.Invoke();
         }
     }
 
