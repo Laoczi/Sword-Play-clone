@@ -28,5 +28,6 @@ public class SwordFollow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy")) onTouchEnemy?.Invoke();
+        if (other.CompareTag("Key")) other.GetComponent<CollectableKey>().Cut();
     }
 }
