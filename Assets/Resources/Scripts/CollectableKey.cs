@@ -38,6 +38,10 @@ public class CollectableKey : MonoBehaviour
         _rbKeyUp.AddForce(Vector3.left * _pushForce, ForceMode.Impulse);
         _rbKeyDown.AddForce(Vector3.right * _pushForce, ForceMode.Impulse);
 
+        int keyCount = PlayerPrefs.GetInt("KeyCount");
+        keyCount++;
+        PlayerPrefs.SetInt("KeyCount", keyCount);
+
         onCutKey?.Invoke();
 
         Destroy(this.gameObject, 5f);
