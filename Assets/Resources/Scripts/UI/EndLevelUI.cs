@@ -22,8 +22,12 @@ public class EndLevelUI : MonoBehaviour
     }
     void OnEndGame()
     {
-        _panel.SetActive(true);
         Wallet.singleton.Add(70);
+
+        int keyCount = PlayerPrefs.GetInt("KeyCount");
+        if (keyCount >= 3) return;
+
+        _panel.SetActive(true);
     }
     public void GoToNextLevel()
     {
@@ -31,6 +35,9 @@ public class EndLevelUI : MonoBehaviour
     }
     void OnOpenSkin(int id)
     {
+        int keyCount = PlayerPrefs.GetInt("KeyCount");
+        if (keyCount >= 3) return;
+
         _panel.SetActive(true);
         _skinProgressPanel.SetActive(false);
         _newSkinPanel.SetActive(true);
