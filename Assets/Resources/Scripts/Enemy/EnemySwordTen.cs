@@ -6,6 +6,7 @@ public class EnemySwordTen : Enemy
 {
     [SerializeField] bool _isNeedWalk;
     [SerializeField] float _walkSpeed;
+    [SerializeField] float _walkDuration;
     protected override void DealDamage(Transform swordTransform)
     {
         _animator.StopPlayback();
@@ -38,14 +39,14 @@ public class EnemySwordTen : Enemy
     }
     IEnumerator WalkAndAttack()
     {
-        float allTime = 1.033f;
         float currentTime = 0;
         _animator.SetTrigger("Walk");
-        while (currentTime <= allTime)
+        while (currentTime <= _walkDuration)
         {
-            transform.position += transform.forward * -1 * _walkSpeed * Time.deltaTime;
+            transform.position += transform.forward * _walkSpeed * Time.deltaTime;
             yield return new WaitForEndOfFrame();
             currentTime += Time.deltaTime;
         }
+        _animator.SetTrigger("Attack");
     }
 }

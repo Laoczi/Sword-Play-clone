@@ -101,7 +101,7 @@ public class CameraMovement : MonoBehaviour
     }
     void OnDeath()
     {
-        Animator anim =  GetComponent<Animator>();
+        Animator anim = _playerCamera.GetComponent<Animator>();
         anim.enabled = true;
         anim.SetTrigger("Death");
 
