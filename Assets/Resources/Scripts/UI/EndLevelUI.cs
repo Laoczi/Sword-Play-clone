@@ -8,6 +8,7 @@ public class EndLevelUI : MonoBehaviour
     [SerializeField] GameObject _newSkinPanel;
     [SerializeField] GameObject _skinProgressPanel;
     [SerializeField] GameObject[] _newSkinIcons;
+    [SerializeField] float _showDelay = 0;
 
     private void Start()
     {
@@ -27,6 +28,12 @@ public class EndLevelUI : MonoBehaviour
         int keyCount = PlayerPrefs.GetInt("KeyCount");
         if (keyCount >= 3) return;
 
+        StartCoroutine(ShowPanelWithDelay());
+    }
+    IEnumerator ShowPanelWithDelay()
+    {
+        yield return new WaitForSeconds(_showDelay);
+
         _panel.SetActive(true);
     }
     public void GoToNextLevel()
@@ -38,7 +45,6 @@ public class EndLevelUI : MonoBehaviour
         int keyCount = PlayerPrefs.GetInt("KeyCount");
         if (keyCount >= 3) return;
 
-        _panel.SetActive(true);
         _skinProgressPanel.SetActive(false);
         _newSkinPanel.SetActive(true);
         _newSkinIcons[id - 1].SetActive(true);

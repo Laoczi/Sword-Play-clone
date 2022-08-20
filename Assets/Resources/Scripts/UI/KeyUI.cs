@@ -12,6 +12,7 @@ public class KeyUI : MonoBehaviour
 {
     public static KeyUI singleton;
 
+    [SerializeField] float _showDelay = 0;
     [SerializeField] GameObject _panel;
     [SerializeField] GameObject[] _topPrizeIcons;
     [SerializeField] GameObject[] _currentKeysIcons;
@@ -48,11 +49,17 @@ public class KeyUI : MonoBehaviour
     {
         singleton = this;
     }
-    public void ShowMenu()
+    void ShowMenu()
     {
         int keyCount = PlayerPrefs.GetInt("KeyCount");
 
         if (keyCount < 3) return;
+
+        StartCoroutine(ShowWithDelay());
+    }
+    IEnumerator ShowWithDelay()
+    {
+        yield return new WaitForSeconds(_showDelay);
 
         _panel.SetActive(true);
         SelectTopPrize();
