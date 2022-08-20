@@ -39,11 +39,11 @@ public class EndLevelUI : MonoBehaviour
     private void OnEnable()
     {
         SkinProgress.onOpenSkin += OnOpenSkin;
-        CameraPathMoveControl.onReachedFinish += OnEndGame;
+        CameraMovement.onReachedFinish += OnEndGame;
     }
     private void OnDisable()
     {
         SkinProgress.onOpenSkin -= OnOpenSkin;
-        CameraPathMoveControl.onReachedFinish -= OnEndGame;
+        CameraMovement.onReachedFinish -= OnEndGame;
     }
 }

@@ -1,9 +1,9 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class CameraPathMoveControl : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     public static event Action onDeath;
     public static event Action onReachedFinish;
@@ -30,11 +30,13 @@ public class CameraPathMoveControl : MonoBehaviour
     bool _isDead;
 
     Transform _lookTarget;
+    List<Transform> _lookTargets;
 
     bool _gameIsStarted;
 
     private void Start()
     {
+        _lookTargets = new List<Transform>();
         _pathLenght = _path.lenght;
         _isReachedEnd = false;
         _isDead = false;
@@ -93,8 +95,8 @@ public class CameraPathMoveControl : MonoBehaviour
         if (other.CompareTag("EnemyFov"))
         {
             _currentFov = _slowFov;
-            _lookTarget = other.transform;
-
+            _lookTargets.Add(other.transform);
+            _lookTarget = _lookTargets[0];
         }
     }
     void OnDeath()
@@ -111,26 +113,42 @@ public class CameraPathMoveControl : MonoBehaviour
     {
         _currentMoveSpeed = _slowMoveSpeed;
     }
-    void SetDefaultMovementAndLook()
+    void OnKillEnemy()
     {
-        _currentMoveSpeed = _defaultMoveSpeed;
-        _lookTarget = null;
-        _currentFov = _defaultFov;
+        if(_lookTargets.Count > 0)
+        {
+            _lookTargets.RemoveAt(0);
+        }
+
+        if (_lookTargets.Count > 0)
+        {
+            _lookTarget = _lookTargets[0];
+        }
+        else
+        {
+            _currentMoveSpeed = _defaultMoveSpeed;
+            _lookTarget = null;
+            _currentFov = _defaultFov;
+        }
     }
     void OnStartGame()
     {
         _gameIsStarted = true;
     }
+    public void EndMove()
+    {
+        onReachedFinish?.Invoke();
+    }
     private void OnEnable()
     {
         StartTutor.onClick += OnStartGame;
-        Bullet.onDead += SetDefaultMovementAndLook;
-        Enemy.onDeath += SetDefaultMovementAndLook;
+        Bullet.onDead += OnKillEnemy;
+        Enemy.onDeath += OnKillEnemy;
     }
     private void OnDisable()
     {
         StartTutor.onClick -= OnStartGame;
-        Bullet.onDead -= SetDefaultMovementAndLook;
-        Enemy.onDeath -= SetDefaultMovementAndLook;
+        Bullet.onDead -= OnKillEnemy;
+        Enemy.onDeath -= OnKillEnemy;
     }
 }

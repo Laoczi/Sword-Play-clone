@@ -74,10 +74,10 @@ public class SkinProgress : MonoBehaviour
     }
     private void OnEnable()
     {
-        CameraPathMoveControl.onReachedFinish += OnLevelEnd;
+        CameraMovement.onReachedFinish += OnLevelEnd;
     }
     private void OnDisable()
     {
-        CameraPathMoveControl.onReachedFinish -= OnLevelEnd;
+        CameraMovement.onReachedFinish -= OnLevelEnd;
     }
 }

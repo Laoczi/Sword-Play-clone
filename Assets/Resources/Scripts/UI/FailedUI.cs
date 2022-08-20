@@ -27,10 +27,10 @@ public class FailedUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        CameraPathMoveControl.onDeath += OnPlayerDead;
+        CameraMovement.onDeath += OnPlayerDead;
     }
     private void OnDisable()
     {
-        CameraPathMoveControl.onDeath -= OnPlayerDead;
+        CameraMovement.onDeath -= OnPlayerDead;
     }
 }

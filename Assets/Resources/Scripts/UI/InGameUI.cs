@@ -22,7 +22,7 @@ public class InGameUI : MonoBehaviour
         _panel.SetActive(false);
         _comboEffect.SetActive(false);
 
-        _playerTransform = FindObjectOfType<CameraPathMoveControl>().transform;
+        _playerTransform = FindObjectOfType<CameraMovement>().transform;
         Path path = FindObjectOfType<Path>();
         _endPoint = path.GetPoint(path.lenght - 1);
 
@@ -60,15 +60,15 @@ public class InGameUI : MonoBehaviour
         ComboSystem.onStartCombo += OnStartCombo;
         ComboSystem.onEndCombo += OnEndCombo;
         StartTutor.onClick += OnStartGame;
-        CameraPathMoveControl.onReachedFinish += OnEndGame;
-        CameraPathMoveControl.onDeath += OnEndGame;
+        CameraMovement.onReachedFinish += OnEndGame;
+        CameraMovement.onDeath += OnEndGame;
     }
     private void OnDisable()
     {
         ComboSystem.onStartCombo -= OnStartCombo;
         ComboSystem.onEndCombo -= OnEndCombo;
         StartTutor.onClick -= OnStartGame;
-        CameraPathMoveControl.onReachedFinish -= OnEndGame;
-        CameraPathMoveControl.onDeath -= OnEndGame;
+        CameraMovement.onReachedFinish -= OnEndGame;
+        CameraMovement.onDeath -= OnEndGame;
     }
 }

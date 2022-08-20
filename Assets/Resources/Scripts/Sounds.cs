@@ -43,14 +43,14 @@ public class Sounds : MonoBehaviour
     }
     private void OnEnable()
     {
-        CameraPathMoveControl.onReachedFinish += PlayEndLevel;
+        CameraMovement.onReachedFinish += PlayEndLevel;
         SkinProgress.onOpenSkin += PlaySkinkUnlock;
         Enemy.onShoot += PlayEnemyAttack;
         SwordFollow.onTouchEnemy += PlaySwordAttack;
     }
     private void OnDisable()
     {
-        CameraPathMoveControl.onReachedFinish -= PlayEndLevel;
+        CameraMovement.onReachedFinish -= PlayEndLevel;
         SkinProgress.onOpenSkin -= PlaySkinkUnlock;
         Enemy.onShoot -= PlayEnemyAttack;
         SwordFollow.onTouchEnemy -= PlaySwordAttack;
