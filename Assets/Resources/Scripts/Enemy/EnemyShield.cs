@@ -7,6 +7,7 @@ public class EnemyShield : Enemy
 {
     [SerializeField] int _shieldXPCount;
     [SerializeField] TextMeshPro _shieldCount;
+    [SerializeField] ParticleSystem _shieldEffect;
 
     [Header("Walk settings")]
     [SerializeField] bool _isNeedWalk;
@@ -22,6 +23,7 @@ public class EnemyShield : Enemy
     protected override void DealDamage(Transform swordTransform)
     {
         _shieldXPCount--;
+        _shieldEffect.Play();
 
         if (_shieldXPCount <= 0)
         {

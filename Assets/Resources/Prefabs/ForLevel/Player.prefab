@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 1473922977811380351}
   - component: {fileID: 1473922977811380349}
   - component: {fileID: 1473922977811380350}
+  - component: {fileID: 3677434850334777670}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -299,6 +300,26 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473922977811380344}
   m_Enabled: 1
+--- !u!95 &3677434850334777670
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473922977811380344}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 20da43cb8f262ce499083db5ff7c3f60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4792352378669827295
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +364,6 @@ GameObject:
   - component: {fileID: 2060527350}
   - component: {fileID: 1572105737}
   - component: {fileID: 1572105733}
-  - component: {fileID: 4193898409949553173}
   - component: {fileID: 4293067358803680404}
   - component: {fileID: 851544279958261682}
   m_Layer: 0
@@ -440,26 +460,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &4193898409949553173
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5449847829661560046}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20da43cb8f262ce499083db5ff7c3f60, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4293067358803680404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 0.5
   _slowTime: 0.3
+  _playAfterKillEnemy: 0
 --- !u!114 &851544279958261682
 MonoBehaviour:
   m_ObjectHideFlags: 0
