@@ -5,6 +5,11 @@ using UnityEngine;
 public class KeyCounter : MonoBehaviour
 {
     int _currentKeyCountForLevel = 0;
+
+    private void Start()
+    {
+        Debug.Log("key count: " + PlayerPrefs.GetInt("KeyCount"));
+    }
     void OnCollectKey()
     {
         _currentKeyCountForLevel++;
