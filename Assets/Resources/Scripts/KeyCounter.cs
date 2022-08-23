@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class KeyCounter : MonoBehaviour
 {
-    int _currentKeyCountForLevel = 0;
+    public int currentCount { get; private set; }
 
     private void Start()
     {
         Debug.Log("key count: " + PlayerPrefs.GetInt("KeyCount"));
+        currentCount = 0;
     }
     void OnCollectKey()
     {
-        _currentKeyCountForLevel++;
+        currentCount++;
     }
     void OnEndLevel()
     {
         int keyCount = PlayerPrefs.GetInt("KeyCount");
 
-        keyCount += _currentKeyCountForLevel;
+        keyCount += currentCount;
 
         PlayerPrefs.SetInt("KeyCount", keyCount > 3 ? 3 : keyCount);
     }

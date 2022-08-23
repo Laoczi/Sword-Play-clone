@@ -7,6 +7,7 @@ public class KeyCountUI : MonoBehaviour
     [SerializeField] float _duration;
     [SerializeField] GameObject _menu;
     [SerializeField] GameObject[] _keyIcons;
+    [SerializeField] KeyCounter _keyCounter;
     void ShowMenu()
     {
         StartCoroutine(ShowProcess());
@@ -28,7 +29,7 @@ public class KeyCountUI : MonoBehaviour
     }
     void UpdateKeyIcons()
     {
-        int keyCount = PlayerPrefs.GetInt("KeyCount");
+        int keyCount = PlayerPrefs.GetInt("KeyCount") + _keyCounter.currentCount;
 
         for (int i = 0; i < 3; i++)
         {
