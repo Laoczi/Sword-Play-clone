@@ -92,6 +92,10 @@ public class SkinsShop : MonoBehaviour
 
         PlayerPrefs.SetInt("OpenSkin " + openedSkinsID[randomSkin], 1);
     }
+    public void AddReward()
+    {
+        Wallet.singleton.Add(200);
+    }
     public void HideMenu()
     {
         _menu.SetActive(false);

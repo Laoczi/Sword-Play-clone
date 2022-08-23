@@ -6,6 +6,8 @@ public class EndLevelUI : MonoBehaviour
 {
     [SerializeField] GameObject _panel;
     [SerializeField] GameObject _newSkinPanel;
+    [SerializeField] GameObject _claimedSkinPanel;
+    [SerializeField] GameObject[] _claimedSKins;
     [SerializeField] GameObject _skinProgressPanel;
     [SerializeField] GameObject[] _newSkinIcons;
     [SerializeField] float _showDelay = 0;
@@ -17,6 +19,10 @@ public class EndLevelUI : MonoBehaviour
         _skinProgressPanel.SetActive(true);
 
         foreach (var item in _newSkinIcons)
+        {
+            item.SetActive(false);
+        }
+        foreach (var item in _claimedSKins)
         {
             item.SetActive(false);
         }
@@ -36,6 +42,11 @@ public class EndLevelUI : MonoBehaviour
 
         _panel.SetActive(true);
     }
+    public void ClaimSkin()
+    {
+        _newSkinPanel.SetActive(false);
+        _claimedSkinPanel.SetActive(true);
+    }
     public void GoToNextLevel()
     {
         LevelProgress.singleton.GoToNextLevel();
@@ -48,6 +59,7 @@ public class EndLevelUI : MonoBehaviour
         _skinProgressPanel.SetActive(false);
         _newSkinPanel.SetActive(true);
         _newSkinIcons[id - 1].SetActive(true);
+        _claimedSKins[id - 1].SetActive(true);
     }
     private void OnEnable()
     {

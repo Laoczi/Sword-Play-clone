@@ -18,7 +18,6 @@ public class KeyBox : MonoBehaviour, IPointerClickHandler
     {
         int keyCount = PlayerPrefs.GetInt("KeyCount");
 
-        if (KeyUI.singleton.openedBoxesCount > 2) return;
         if (keyCount <= 0) return;
         if (_isOpen) return;
 

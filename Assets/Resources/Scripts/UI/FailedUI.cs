@@ -21,6 +21,10 @@ public class FailedUI : MonoBehaviour
         yield return new WaitForSeconds(_showDelay);
         _panel.SetActive(true);
     }
+    public void GoToNextLevel()
+    {
+        LevelProgress.singleton.GoToNextLevel();
+    }
     public void RetryLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

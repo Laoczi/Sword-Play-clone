@@ -43,7 +43,6 @@ public class KeyUI : MonoBehaviour
             }
         } 
     }
-    public int openedBoxesCount { get; private set; }
 
     private void Awake()
     {
@@ -65,14 +64,15 @@ public class KeyUI : MonoBehaviour
         SelectTopPrize();
         UpdateKeyIcons();
     }
+    public void AddKeys()
+    {
+        PlayerPrefs.SetInt("KeyCount", 3);
+        UpdateKeyIcons();
+    }
     public void Hide()
     {
         PlayerPrefs.SetInt("KeyCount", 0);
         LevelProgress.singleton.GoToNextLevel();
-    }
-    void OnOpenChest()
-    {
-        openedBoxesCount++;
     }
     void UpdateKeyIcons()
     {
@@ -91,13 +91,11 @@ public class KeyUI : MonoBehaviour
     {
         CameraMovement.onReachedFinish += ShowMenu;
         KeyBox.onOpenChest += UpdateKeyIcons;
-        KeyBox.onOpenChest += OnOpenChest;
     }
     private void OnDisable()
     {
         CameraMovement.onReachedFinish -= ShowMenu;
         KeyBox.onOpenChest -= UpdateKeyIcons;
-        KeyBox.onOpenChest -= OnOpenChest;
     }
     void SelectTopPrize()
     {
