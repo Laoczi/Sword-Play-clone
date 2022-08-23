@@ -28,12 +28,14 @@ public class EnemyBazooka : Enemy
     }
     IEnumerator AttackProcess()
     {
+        _animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.25f);
+
         int count = 0;
 
         while(count < _bulletsCount)
         {
             CallOnShootEvent();
-            _animator.SetTrigger("Attack");
             GameObject bullet = Instantiate(_bullet, _bulletSpawnPoint.position, Quaternion.LookRotation(_bulletSpawnPoint.forward));
             yield return new WaitForSeconds(_bulletSpawnDelay);
 
