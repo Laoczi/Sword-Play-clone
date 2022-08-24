@@ -10,7 +10,6 @@ public class EnemyShield : Enemy
     [SerializeField] ParticleSystem _shieldEffect;
 
     [Header("Walk settings")]
-    [SerializeField] bool _isNeedWalk;
     [SerializeField] float _baseWalkSpeed;
     [SerializeField] float _slowWalkSpeed;
     float _currentWalkSpeed;
@@ -45,15 +44,18 @@ public class EnemyShield : Enemy
 
     protected override void OnPlayerEnterRangeZone()
     {
-        if (_isNeedWalk) StartCoroutine(WalkAndAttack());
-        else _animator.SetTrigger("Attack");
+        _animator.SetFloat("Speed", 1);
+        _currentWalkSpeed = _baseWalkSpeed;
+        _animator.SetTrigger("Attack");
     }
     protected override void OnPlayerEnterSlowZone()
     {
         base.OnPlayerEnterSlowZone();
+        _animator.SetFloat("Speed", _slowAnimationSpeed);
         _currentWalkSpeed = _slowWalkSpeed;
+        StartCoroutine(WalkForward());
     }
-    IEnumerator WalkAndAttack()
+    IEnumerator WalkForward()
     {
         float allTime = 1.1f;
         float currentTime = 0;
