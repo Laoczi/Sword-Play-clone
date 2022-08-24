@@ -15,11 +15,11 @@ public class LevelProgress : MonoBehaviour
 
     public static int level { get; private set; }
 
-    static int currentLevelProgress;
+    public static int currentLevelProgress;
 
     private void Awake()
     {
-        if(обнулитьѕрогресс) PlayerPrefs.DeleteAll();
+        if (обнулитьѕрогресс) PlayerPrefs.DeleteAll();
 
         if (singleton == null) singleton = this;
         else Destroy(this.gameObject);

@@ -16,10 +16,10 @@ public class LevelProgressUI : MonoBehaviour
     [SerializeField] Color _nextLevelColor;
     private void Start()
     {
-        int currentLevel = LevelProgress.level;
+        int currentLevel = LevelProgress.currentLevelProgress;
         int levelDozens = 0;
 
-        _currentLevel.text = "Level " + currentLevel.ToString();
+        _currentLevel.text = "Level " + LevelProgress.level.ToString();
 
         currentLevel -= 1;
 
