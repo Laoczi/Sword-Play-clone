@@ -16,6 +16,7 @@ public class KeyUI : MonoBehaviour
     [SerializeField] GameObject _panel;
     [SerializeField] GameObject[] _topPrizeIcons;
     [SerializeField] GameObject[] _currentKeysIcons;
+    [SerializeField] GameObject _rewardButton;
 
     public int topPrizeSkinId { get; private set; }
     public int reward { get { return 25 * Random.Range(1, 5); } }
@@ -43,6 +44,8 @@ public class KeyUI : MonoBehaviour
             }
         } 
     }
+
+    int _openChestsCount = 0;
 
     private void Awake()
     {
@@ -87,15 +90,23 @@ public class KeyUI : MonoBehaviour
             _currentKeysIcons[i].SetActive(keyCount - 1 < i - 3);
         }
     }
+    void UpdateRewardButton()
+    {
+        _openChestsCount++;
+
+        _rewardButton.SetActive(_openChestsCount < 9);
+    }
     private void OnEnable()
     {
         CameraMovement.onReachedFinish += ShowMenu;
         KeyBox.onOpenChest += UpdateKeyIcons;
+        KeyBox.onOpenChest += UpdateRewardButton;
     }
     private void OnDisable()
     {
         CameraMovement.onReachedFinish -= ShowMenu;
         KeyBox.onOpenChest -= UpdateKeyIcons;
+        KeyBox.onOpenChest -= UpdateRewardButton;
     }
     void SelectTopPrize()
     {
