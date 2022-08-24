@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5142dd73647f0746bd7f23e670b3fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowDivisor: 3
   _flySpeed: 1
   _divisorByGravity: 15
   _lifeTime: 15
@@ -215,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Separation: 0.02
   DestroyTargets: 1
-  UseAsync: 1
+  UseAsync: 0
   VertexCreationThreshold: 0
   DefaultMaterial: {fileID: 2100000, guid: ef20523c71ca4ef478db228cb093a6b1, type: 2}
   target: {fileID: 5758128857486303386}
