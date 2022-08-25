@@ -12,6 +12,8 @@ public class EndLevelUI : MonoBehaviour
     [SerializeField] GameObject[] _newSkinIcons;
     [SerializeField] float _showDelay = 0;
 
+    int _claimedSkinId;
+
     private void Start()
     {
         _panel.SetActive(false);
@@ -46,6 +48,7 @@ public class EndLevelUI : MonoBehaviour
     {
         _newSkinPanel.SetActive(false);
         _claimedSkinPanel.SetActive(true);
+        PlayerPrefs.SetInt("OpenSkin " + _claimedSkinId, 1);
     }
     public void GoToNextLevel()
     {
@@ -60,6 +63,8 @@ public class EndLevelUI : MonoBehaviour
         _newSkinPanel.SetActive(true);
         _newSkinIcons[id - 1].SetActive(true);
         _claimedSkins[id - 1].SetActive(true);
+
+        _claimedSkinId = id;
     }
     private void OnEnable()
     {

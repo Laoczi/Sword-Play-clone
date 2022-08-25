@@ -63,7 +63,6 @@ public class SkinProgress : MonoBehaviour
         if (_currentSkinProgress == 100)
         {
             ResetProgress();
-            PlayerPrefs.SetInt("OpenSkin " + _currentSkinID, 1);
             onOpenSkin?.Invoke(_currentSkinID);
         }
     }
